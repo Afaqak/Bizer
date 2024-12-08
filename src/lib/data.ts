@@ -56,5 +56,14 @@ export const projects: Project[] = [
       "An agency which provides cutting-edge technology solutions to clients to enhance their productivity, streamline their processes, and improve their overall business operations.",
     image: "/images/brownbrains.png",
     tags: ["React", "Tailwind", "Framer-Motion"],
-  }
+  },
+  
+  {
+    id: "8",
+    title: "Doctor Scheduler",
+    description:
+      "A platform to ease your schedule management, set schedules ahead of time we keep track of it for you.",
+    image: "/images/doctor_scheduler.png",
+    tags: ["NextJs", "Supabase", "Tailwind"],
+  },
 ];
