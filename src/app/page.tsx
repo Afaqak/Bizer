@@ -6,7 +6,6 @@ import ProjectsSection from "@/components/ProjectsSection";
 import ServicesSection from "@/components/Services";
 import { InfiniteSlider } from "@/components/slider";
 import { SocialLinks } from "@/components/SocialLinks";
-import Image from "next/image";
 
 export default function Home() {
   return (
