@@ -2,26 +2,113 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 7));
+  }
+}
+
+.slide-track {
+  animation: scroll 10 linear infinite;
+  display: flex;
+  width: calc(250px * 14);
+} */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --no-of-slides: 7;
+  --slides-in-view: 4;
+  --slide-width: 180px;
+  --slide-height: 300px;
+  --iteration-time: 10s;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(var(--slide-width) * var(--no-of-slides) * -1));
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.carousel__wrapper {
+  display: flex;
+  /*justify-content: center;*/
+  align-items: center;
+
+  width: calc(var(--slides-in-view) * var(--slide-width));
+  overflow: hidden;
+  border: 1px dashed gray;
+  margin: 0 auto;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.carousel {
+  overflow: hidden;
+  width: calc(2 * var(--no-of-slides));
+}
+
+.carousel__slide {
+  animation: scroll var(--iteration-time) linear infinite;
+  display: flex;
+  flex-direction: column;
+
+  flex: 0 0 auto;
+  width: var(--slide-width);
+  height: var(--slide-height);
+  box-sizing: border-box;
+  /*border: 1px dotted darkblue;*/
+}
+
+.carousel__image {
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  height: 50%;
+  /*width: 100px;*/
+  margin: 15px 20px;
+}
+
+/* just for analysis remove this 3 rules later*/
+.carousel__slide {
+  position: relative;
+}
+
+.carousel {
+  counter-reset: slideNo;
+}
+
+/* .carousel__slide::before {
+  counter-increment: slideNo;
+  content: counter(slideNo);
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  font-size: 2rem;
+  color: lime;
+} */
+
+
+.embla {
+  position: relative;
+  overflow: hidden;
+}
+
+.embla__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.embla__container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.embla__slide {
+  position: relative;
+  flex: 0 0 auto;
+  width: auto; /* Adjust based on your design */
+  min-width: 100px; /* Example minimum width */
 }

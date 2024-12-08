@@ -8,10 +8,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animation:{
+        'move-left':'move-left 1s linear infinite'
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      keyframes:{
+        'move-left':{
+          '0%':{
+            transform:"translateX(0%)"
+          },
+          '100%':{
+            transform:"translateX(-50%)"
+          },
+        }
+      }
     },
   },
   plugins: [],
