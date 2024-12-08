@@ -18,7 +18,7 @@ export const projects: Project[] = [
     tags: ["NextJs", "Tailwind","GSAP"],
   },
   {
-    id: "2",
+    id: "3",
     title: "Taublab",
     description:
       "A platform focused on pushing the boundaries of innovation by leveraging specialized LLM technology and advanced generative multi-agent system, pioneering the next generation of gaming.",
@@ -26,7 +26,7 @@ export const projects: Project[] = [
     tags: ["NextJs", "ThreeJs", "Tailwind"],
   },
   {
-    id: "3",
+    id: "4",
     title: "Transcom",
     description:
       "Transcom is a global customer service company that specializes in providing digital innovations and smart solutions to support brands in the tech, e-commerce, and internet space",
@@ -34,7 +34,7 @@ export const projects: Project[] = [
     tags: ["Js", "Css", "Html", "GSAP"],
   },
   {
-    id: "4",
+    id: "5",
     title: "Neurotablet",
     description:
       "A platform which helps you locate adhd medications from locating the medications to delivering them we do it all.",
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     tags: ["NextJs", "Supabase", "Tailwind",'Mapbox'],
   },
   {
-    id: "5",
+    id: "6",
     title: "Alokofarms",
     description:
       "A vibrant landing page showcasing fresh fruits and vegetables, emphasizing quality, freshness, and healthy living. Designed to attract and engage customers with visually appealing layouts and clear calls-to-action.",
@@ -50,20 +50,11 @@ export const projects: Project[] = [
     tags: ["NextJs", "Tailwind"],
   },
   {
-    id: "6",
+    id: "7",
     title: "BrownBrains",
     description:
       "An agency which provides cutting-edge technology solutions to clients to enhance their productivity, streamline their processes, and improve their overall business operations.",
     image: "/images/brownbrains.png",
     tags: ["React", "Tailwind", "Framer-Motion"],
-  },
-
-  {
-    id: "7",
-    title: "Doctor Scheduler",
-    description:
-      "A platform to ease your schedule management, set schedules ahead of time we keep track of it for you.",
-    image: "/images/doctor_scheduler.png",
-    tags: ["NextJs", "Supabase", "Tailwind"],
-  },
+  }
 ];
