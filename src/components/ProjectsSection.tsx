@@ -51,7 +51,7 @@ export default function ProjectsSection() {
           initial={{ opacity: 0, y: 50 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl font-bold mb-4 w-fit mx-auto bg-orange-500 p-6 text-white">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 w-fit mx-auto bg-orange-500 p-6 text-white">
             Helping brands thrive
             <br />
             in the digital world

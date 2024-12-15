@@ -23,7 +23,7 @@ export function SocialLinks() {
     scrollYProgress,
     [0, 0.5, 1],
     [
-      "100%", // Start fully below
+      "30%", // Start fully below
       "0%", // Come into view
       "0%", // Slightly move up as scrolling continues
     ]
@@ -55,7 +55,7 @@ export function SocialLinks() {
     <motion.div
       // ref={ref}
 
-      className="flex flex-col items-center sticky top-0 py-48 font-bold bg-[#1C1C1C] justify-center space-y-8"
+      className="flex flex-col items-center sticky top-0 py-32 md:py-48 font-bold bg-[#1C1C1C] justify-center space-y-8"
     >
       <motion.div
         transition={{
@@ -65,13 +65,13 @@ export function SocialLinks() {
         style={{
           y,
           scale,
-          rotate: shake, // Apply shake effect
+          rotate: shake,
 
           transformOrigin: "center bottom",
         }}
-        className="text-center space-y-4 w-[80%] lg:w-[60%] 2xl:w-[40%] mx-auto"
+        className="text-center space-y-4 w-[90%] lg:w-[60%] 2xl:w-[40%] mx-auto"
       >
-        <h2 className="text-2xl md:text-4xl text-[#D0D5FF] flex flex-wrap justify-center items-center gap-2">
+        <h2 className="text-3xl md:text-4xl text-[#D0D5FF] flex flex-wrap justify-center items-center gap-2">
           FIND ME ON{" "}
           <Link
             href="https://twitter.com"
@@ -90,7 +90,7 @@ export function SocialLinks() {
           </Link>{" "}
           FOR PROFESSIONAL UPDATES.
         </h2>
-        <p className="text-2xl md:text-4xl mx-auto text-[#D0D5FF] flex flex-wrap justify-center items-center gap-2">
+        <p className="text-3xl md:text-4xl mx-auto text-[#D0D5FF] flex flex-wrap justify-center items-center gap-2">
           DESK SETUPS ON{" "}
           <Link
             href="https://instagram.com"
@@ -100,7 +100,7 @@ export function SocialLinks() {
             <Image src={InstagramIcon} width={50} height={50} alt="Instagram" />
           </Link>
         </p>
-        <p className="text-2xl md:text-4xl mx-auto text-[#D0D5FF] flex flex-wrap justify-center items-center gap-2">
+        <p className="text-3xl md:text-4xl mx-auto text-[#D0D5FF] flex flex-wrap justify-center items-center gap-2">
           CHECK OUT MY CREATIVE SHOWCASE ON{" "}
           <Link
             href="https://behance.net"

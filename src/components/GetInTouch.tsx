@@ -31,7 +31,7 @@ export function GetInTouch() {
   };
 
   return (
-    <main className="py-48 sticky top-0 z-10 bg-[#1C1C1C]">
+    <main className="py-20 md:py-42 sticky top-0 z-10 bg-[#1C1C1C]">
       <motion.section 
         initial="hidden"
         whileInView="visible"

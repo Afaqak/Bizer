@@ -9,7 +9,7 @@ import { SocialLinks } from "@/components/SocialLinks";
 
 export default function Home() {
   return (
-    <main className="">
+    <main className="w-full">
       <InfiniteSlider />
       <ServicesSection />
       <ProjectsSection/>

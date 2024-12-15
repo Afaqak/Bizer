@@ -20,7 +20,7 @@ export  function ContactForm() {
   return (
     <main 
     id="contact"
-    className="min-h-[calc(80vh-3rem)] sticky top-0 z-20 flex items-center justify-center bg-[#1C1C1C] text-white">
+    className="min-h-[110vh] md:mb-[30vh] sticky top-0 z-20 flex items-center justify-center bg-[#1C1C1C] text-white">
       <div className="container max-w-xl bg-[#26241F] rounded-mx shadow mx-auto p-10">
         <motion.div 
           className="space-y-8"

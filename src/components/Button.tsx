@@ -14,7 +14,7 @@ export const Button = ({
     <button
       onClick={onClick}
       className={cn(
-        "bg-black text-white font-medium  h-10 w-fit p-4 items-center flex rounded-full",
+        "bg-black text-white font-medium  h-12 w-fit p-4 items-center flex rounded-full",
         className
       )}
     >

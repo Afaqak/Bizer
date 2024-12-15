@@ -8,15 +8,14 @@ import {
 import { useRef, useState } from "react";
 export default function ServicesSection() {
   const ref = useRef(null);
-
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
-
-
-  const y = useTransform(scrollYProgress, [0, 0.5, 1], ["100%", "0%", "0%"]);
-
+  
+  const y = useTransform(scrollYProgress, [0, 0.3, 1], ["40%", "0%", "0%"], {
+    ease: (t) => Math.min(1, t * 1.5) 
+  });
   const [expandedService, setExpandedService] = useState<string | null>(
     "Creative Design"
   );
@@ -45,7 +44,7 @@ export default function ServicesSection() {
   ];
 
   return (
-    <div id="services" className="px-4 py-48 bg-[#1C1C1C] text-white ">
+    <div id="services" className="px-4 py-20 md:py-48 bg-[#1C1C1C] text-white ">
       <motion.div
         transition={{
           type: "spring",
@@ -63,9 +62,9 @@ export default function ServicesSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative flex h-[505.333px] items-center justify-center flex-col bg-[#26241F]"
+          className="relative flex h-[400px] md:h-[505.333px] items-center justify-center flex-col bg-[#26241F]"
         >
-          <h1 className="text-5xl xl:text-5xl tracking-wide text-center font-bold leading-snug">
+          <h1 className="text-4xl md:text-5xl xl:text-5xl tracking-wide text-center font-bold leading-snug">
             <span className="text-[#FABF29]">Empowering</span> growth
             <br />
             with bold design
@@ -88,7 +87,6 @@ export default function ServicesSection() {
             transition={{ delay: 0.6, type: "spring" }}
             className="absolute bottom-0 left-0 w-24 h-24"
           >
-            {/* <div className="w-full h-full bg-purple-500 rounded-full blur-sm" /> */}
           </motion.div>
         </motion.div>
 
