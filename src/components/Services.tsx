@@ -41,6 +41,11 @@ export default function ServicesSection() {
       description:
         "Prompt delivery of proficient websites via well-known systems such as Shopify and WooCommerce etc.",
     },
+    {
+      title: "Creative UI/UX Design",
+      description:
+        "Eye-catching and user-friendly designs that engage visitors, making a lasting impression while ensuring an intuitive user experience.",
+    },
   ];
 
   return (
@@ -65,11 +70,9 @@ export default function ServicesSection() {
           className="relative flex h-[400px] md:h-[505.333px] items-center justify-center flex-col bg-[#26241F]"
         >
           <h1 className="text-4xl md:text-5xl xl:text-5xl tracking-wide text-center font-bold leading-snug">
-            <span className="text-[#FABF29]">Empowering</span> growth
+            <span className="text-[#FABF29]">Fueling</span> growth
             <br />
-            with bold design
-            <br />
-            and creative
+            with innovative design and
           </h1>
           <motion.div
             initial={{ scale: 0 }}
@@ -77,7 +80,7 @@ export default function ServicesSection() {
             transition={{ delay: 0.3, type: "spring" }}
             className="bg-orange-500 text-center px-6 py-3 text-white inline-block mt-4 rounded-lg"
           >
-            <span className="text-4xl font-bold">strategies.</span>
+            <span className="text-4xl font-bold">Strategic Solutions</span>
           </motion.div>
 
           {/* Purple splash decoration */}

@@ -13,7 +13,7 @@ export default function ProjectsSection() {
   });
 
   const headlineY = useTransform(scrollYProgress, [0, 0.5], ["50px", "0px"]);
-  const headlineOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+  const headlineOpacity = useTransform(scrollYProgress, [0, 0], [0, 1]);
 
   const cardVariants = {
     hidden: {

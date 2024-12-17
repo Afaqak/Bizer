@@ -15,7 +15,7 @@ export const Footer = () => {
         {/* Company Name */}
         <div>
           <h3 className="text-3xl font-bold mb-4">HackToast</h3>
-          <p className="text-sm">Transforming ideas into innovative digital solutions.</p>
+          {/* <p className="text-sm">Transforming ideas into innovative digital solutions.</p> */}
         </div>
 
         {/* Navigation Links */}
@@ -45,25 +45,25 @@ export const Footer = () => {
 
         {/* Contact Information */}
         <div>
-          <h4 className="text-xl font-semibold mb-4">Get in Touch</h4>
+          <h4 className="text-xl font-semibold mb-4">Contact</h4>
           <div className="space-y-2">
-            <p>Email: hello@hacktoast.com</p>
-            <Button 
+            <p> Email: <a href="mailto:hello@hacktoast.com" className="text-black-500 hover:underline">hello@hacktoast.com</a></p>
+            {/* <Button 
               onClick={() => handleScroll("#contact")}
               className="mt-4 w-full"
             >
               Contact Us
-            </Button>
+            </Button> */}
           </div>
         </div>
       </div>
 
       {/* Copyright */}
-      <div className="text-center mt-8 pt-4 border-t border-black/20">
+      {/* <div className="text-center mt-8 pt-4 border-t border-black/20">
         <p className="text-sm">
           © {new Date().getFullYear()} HackToast. All Rights Reserved.
         </p>
-      </div>
+      </div> */}
     </footer>
   );
 };

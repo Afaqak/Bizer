@@ -62,9 +62,7 @@ export function GetInTouch() {
             variants={textVariants}
             className="text-gray-400 text-xl md:text-2xl max-w-3xl mx-auto"
           >
-            I'm always open to new opportunities, collaborations, and connections. Whether
-            you have a project you'd like to discuss, want to share your work, or just say hi!
-            Feel free to reach out.
+            If you're looking to build a website or simply want to chat about your ideas, we’d love to hear from you. Feel free to reach out and let’s bring your vision to life!
           </motion.p>
 
           <motion.div
@@ -74,10 +72,10 @@ export function GetInTouch() {
               href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 text-4xl md:text-5xl font-bold text-orange-500 hover:text-orange-400 transition-colors"
+              className="inline-flex items-center gap-2 text-4xl md:text-5xl font-bold text-orange-500 hover:text-orange-400 transition-colors "
             >
               GET IN TOUCH
-              <ArrowRight className="text-3xl animate-move-left ml-2 md:text-4xl" />
+              {/* <ArrowRight className="text-3xl animate-move-left ml-2 md:text-4xl" /> */}
             </motion.a>
           </motion.div>
         </div>

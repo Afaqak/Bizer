@@ -60,10 +60,10 @@ export const projects: Project[] = [
   
   {
     id: "8",
-    title: "Doctor Scheduler",
+    title: "Local Caregiver",
     description:
-      "A platform to ease your schedule management, set schedules ahead of time we keep track of it for you.",
-    image: "/images/doctor_scheduler.png",
-    tags: ["NextJs", "Supabase", "Tailwind"],
+      "Local Caregiver is a platfrom where caregivers can offer services to care seekers",
+    image: "/images/local2.png",
+    tags: ["MongoDB", "React", "NodeJS", "express"],
   },
 ];

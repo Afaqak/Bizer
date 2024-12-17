@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   title: "Bizer - Empowering Innovation",
   description: 
     "Bizer is a leading tech startup revolutionizing the digital landscape. " +
-    "We specialize in cutting-edge solutions, innovative technologies, and transformative services to help businesses thrive in the digital age.",
+    "We specialize in cutting-edge solutions, innovative technologies, and transformative services to help businesses and individuals thrive in the digital age.",
   keywords: [
-    "Bizer",
+    "Hack",
     "Tech Startup",
     "Innovative Solutions",
     "Technology Services",
