@@ -63,7 +63,7 @@ export const projects: Project[] = [
     title: "Local Caregiver",
     description:
       "Local Caregiver is a platfrom where caregivers can offer services to care seekers",
-    image: "/images/local2.png",
+    image: "/images/caregiver.png",
     tags: ["MongoDB", "React", "NodeJS", "express"],
   },
 ];
