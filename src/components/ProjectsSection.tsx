@@ -28,7 +28,7 @@ export default function ProjectsSection() {
       scale: 1,
       rotateX: 0,
       transition: {
-        delay: index * 0.2,
+        delay: index * 0.1,
         duration: 0.8,
         type: "spring",
         stiffness: 50,

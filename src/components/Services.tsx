@@ -6,6 +6,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 export default function ServicesSection() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -78,7 +79,7 @@ export default function ServicesSection() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.3, type: "spring" }}
-            className="bg-orange-500 text-center px-6 py-3 text-white inline-block mt-4 rounded-lg"
+            className="bg-orange-500 text-center text-3xl mx-4 md:text-4xl px-6 py-3 text-white inline-block mt-4 rounded-lg"
           >
             <span className="text-4xl font-bold">Strategic Solutions</span>
           </motion.div>
@@ -116,7 +117,9 @@ export default function ServicesSection() {
                 className="w-full group"
               >
                 <motion.div
-                  className="flex text-start items-center justify-between border-b border-zinc-700 py-4"
+                  className={cn("flex text-start items-center justify-between border-b border-zinc-700 py-4",
+                    index===services?.length-1 && 'border-b-0'
+                  )}
                   layout
                 >
                   <motion.h2
