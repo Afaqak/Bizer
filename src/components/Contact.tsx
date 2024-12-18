@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
+import sendMail from "@/lib/email"
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -13,7 +14,7 @@ export function ContactForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log(formData)
+    sendMail()
   }
 
   return (
