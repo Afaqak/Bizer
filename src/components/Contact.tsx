@@ -55,7 +55,7 @@ export function ContactForm() {
   return (
     <main
       id="contact"
-      className="min-h-screen mb-[28rem] md:mb-[18rem] sticky top-0 z-20 flex items-center justify-center bg-[#1C1C1C] text-white"
+      className="min-h-screen mb-[28rem] md:mb-[14rem] sticky top-0 z-20 flex items-center justify-center bg-[#1C1C1C] text-white"
     >
       <div className="container max-w-xl bg-[#26241F] rounded-mx shadow mx-auto p-10">
         <motion.div

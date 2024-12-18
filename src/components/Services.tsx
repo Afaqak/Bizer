@@ -7,6 +7,7 @@ import {
 } from "framer-motion";
 import { useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+
 export default function ServicesSection() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -50,14 +51,13 @@ export default function ServicesSection() {
   ];
 
   return (
-    <div id="services" className="px-4 py-20 md:py-48 bg-[#1C1C1C] text-white ">
+    <div id="services" className="px-4 py-20 md:py-48 bg-[#1C1C1C] text-white">
       <motion.div
         transition={{
           type: "spring",
         }}
         style={{
           y,
-
           transformOrigin: "center bottom",
         }}
         ref={ref}
@@ -68,7 +68,7 @@ export default function ServicesSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative flex h-[400px] md:h-[505.333px] items-center justify-center flex-col bg-[#26241F]"
+          className="relative flex h-[380px] md:h-full md:max-h-[539.556px] items-center justify-center flex-col bg-[#26241F]"
         >
           <h1 className="text-4xl md:text-5xl xl:text-5xl tracking-wide text-center font-bold leading-snug">
             <span className="text-[#FABF29]">Fueling</span> growth
@@ -99,7 +99,7 @@ export default function ServicesSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="space-y-6 bg-[#26241F] flex p-10 flex-col"
+          className="space-y-6 bg-[#26241F] flex h-full min-h-[539.556px] p-10 flex-col"
         >
           {services.map((service, index) => (
             <motion.div
@@ -149,7 +149,7 @@ export default function ServicesSection() {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{
                         opacity: 1,
-                        height: "200px",
+                        height: "auto",
                         transition: {
                           opacity: { duration: 0.2, delay: 0.1 },
                           height: { duration: 0.3 },
@@ -160,20 +160,18 @@ export default function ServicesSection() {
                         height: 0,
                         transition: {
                           opacity: { duration: 0.2 },
-                          // height: { duration: 0.3 },
                         },
                       }}
                       className="overflow-hidden"
                     >
                       <motion.p
-                        className="py-4 text-2xl text-left font-semibold  text-white"
+                        className="py-4 text-2xl text-left font-semibold text-white"
                         initial={{ y: 10, opacity: 0 }}
                         animate={{
                           y: 0,
                           opacity: 1,
                           transition: { duration: 0.3 },
                         }}
-                        // exit={{ y: -10, opacity: 0 }}
                       >
                         {service.description}
                       </motion.p>
