@@ -68,7 +68,7 @@ export const Header = () => {
         variants={itemVariants} 
         className="text-center break-words w-full"
       >
-        Impactful <span className="text-[#F54E26]">Development</span>, bold design.
+        Transforming <span className="text-[#F54E26]">Ideas</span> into Digital Reality.
       </motion.span>
       
       <motion.span 
@@ -76,23 +76,24 @@ export const Header = () => {
         className="text-center break-words w-full"
       >
         Innovative solutions that{" "}
-        <span className="text-[#82FF1F]">Inspire</span>
+        <span className="text-[#82FF1F]">Deliver Results</span>
       </motion.span>
       
       <motion.span 
         variants={itemVariants} 
         className="text-center break-words w-full"
       >
-        Driving growth, sparking{" "}
-        <span className="text-[#C66AFF]">Change</span>.
+        Driving {" "}
+        <span className="text-[#C66AFF]">Growth</span>, Unlocking{" "}
+        <span className="text-[#C66AFF]">Potential</span>.
       </motion.span>
       
-      <motion.span 
+      {/* <motion.span 
         variants={itemVariants} 
         className="text-center break-words w-full"
       >
         shaping <span className="text-[#FABF29]">Futures</span> with creativity.
-      </motion.span>
+      </motion.span> */}
 
       {/* Bottom star decoration */}
       <motion.div
@@ -111,13 +112,13 @@ export const Header = () => {
         transition={{ delay: 1.2, duration: 0.5 }}
       >
         {" "}
-        We highly dedicated engineers exists to make your business run{" "}
+        We are a team of dedicated engineers committed to make your business go{" "}
         <motion.span
           className={cn("text-2xl", bangers.className)}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          Kaboom
+          Kaboom!
         </motion.span>
       </motion.p>
     </header>

@@ -20,10 +20,10 @@ const sliderItems: SliderItem[] = [
     value: "",
   },
   {
-    key: "retention",
+    key: "experience",
     icon: <ChevronRight />,
-    title: "client retention rate",
-    value: "95%",
+    title: "years of experience",
+    value: "2+",
   },
   {
     key: "snowflake2",
@@ -32,10 +32,10 @@ const sliderItems: SliderItem[] = [
     value: "",
   },
   {
-    key: "clients",
+    key: "projects",
     icon: <ChevronRight />,
-    title: "satisfied clients",
-    value: "18",
+    title: "projects completed",
+    value: "15",
   },
   {
     key: "snowflake3",
@@ -44,18 +44,14 @@ const sliderItems: SliderItem[] = [
     value: "",
   },
   {
-    key: "expectation",
+    key: "team",
     icon: <ChevronRight />,
-    title: "expectation",
-    value: "20",
+    title: "modern technologies utilized",
+    value: "10+",
   },
-  {
-    key: "snowflake4",
-    icon: <Snowflake className="text-[#82FF1F]" />,
-    title: "",
-    value: "",
-  },
-  { key: "projects", icon: <ChevronRight />, title: "projects", value: "14" },
+
+  
+  // { key: "", icon: <ChevronRight />, title: "projects", value: "14" },
 ];
 
 export const InfiniteSlider: React.FC<{ rotate?: number }> = ({
@@ -69,7 +65,7 @@ export const InfiniteSlider: React.FC<{ rotate?: number }> = ({
     },
     [
       AutoPlay({
-        delay: 1000,
+        delay: 1400,
         stopOnInteraction: true,
       }),
     ]

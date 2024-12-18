@@ -7,7 +7,7 @@ export const projects: Project[] = [
     description:
       "Sipath.com is a welcoming web-based portal tailored for educators, makers, and students. It’s a destination for swift distribution, purchase, and discovery of educational resources such as courses, films, literature, assessments, and more",
     image: "/images/sipath.png",
-    tags: ["NextJs", "Node", "Postgres","Framer-Motion"],
+    tags: ["NextJs", "Node", "Postgres", "Framer-Motion"],
   },
   {
     id: "2",
@@ -15,7 +15,7 @@ export const projects: Project[] = [
     description:
       "An animated portfolio built with gsap with focus on parallax and micro animations.",
     image: "/images/jabulani.png",
-    tags: ["NextJs", "Tailwind","GSAP"],
+    tags: ["NextJs", "Tailwind", "GSAP"],
   },
   {
     id: "3",
@@ -39,7 +39,7 @@ export const projects: Project[] = [
     description:
       "A platform which helps you locate adhd medications from locating the medications to delivering them we do it all.",
     image: "/images/neuro.png",
-    tags: ["NextJs", "Supabase", "Tailwind",'Mapbox'],
+    tags: ["NextJs", "Supabase", "Tailwind", "Mapbox"],
   },
   {
     id: "6",
@@ -57,13 +57,13 @@ export const projects: Project[] = [
     image: "/images/brownbrains.png",
     tags: ["React", "Tailwind", "Framer-Motion"],
   },
-  
+
   {
     id: "8",
-    title: "Doctor Scheduler",
+    title: "Local Caregiver",
     description:
-      "A platform to ease your schedule management, set schedules ahead of time we keep track of it for you.",
-    image: "/images/doctor_scheduler.png",
-    tags: ["NextJs", "Supabase", "Tailwind"],
+      "Local Caregiver is a platfrom where caregivers can offer services to care seekers",
+    image: "/images/local2.png",
+    tags: ["MongoDB", "React", "NodeJS", "express"],
   },
 ];

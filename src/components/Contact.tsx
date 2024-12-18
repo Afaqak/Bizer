@@ -2,19 +2,19 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
+import sendMail from "@/lib/email"
 
-export  function ContactForm() {
+export function ContactForm() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    jobTitle: "",
     email: "",
-    phone: ""
+    message: ""
   })
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log(formData)
+    // sendMail()
   }
 
   return (
@@ -29,9 +29,9 @@ export  function ContactForm() {
           transition={{ duration: 0.6 }}
         >
           <div className="space-y-2">
-            <h1 className="text-4xl font-bold">Chat with our team</h1>
+            <h1 className="text-4xl font-bold">Contact Us</h1>
             <p className="text-gray-400">
-              Need help with something? Want a demo? Get in touch with our friendly team and we'll get in touch within 2 hours.
+              Need help with something? Want to discuss an idea? Get in touch with us and we'll get back to you ASAP!
             </p>
           </div>
 
@@ -54,27 +54,18 @@ export  function ContactForm() {
             </div>
 
             <input 
-              type="text"
-              placeholder="Job title"
-              className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-white placeholder:text-zinc-400 focus:outline-none focus:border-zinc-600"
-              value={formData.jobTitle}
-              onChange={(e) => setFormData({...formData, jobTitle: e.target.value})}
-            />
-
-            <input 
               type="email"
-              placeholder="Work email"
+              placeholder="Email"
               className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-white placeholder:text-zinc-400 focus:outline-none focus:border-zinc-600"
               value={formData.email}
               onChange={(e) => setFormData({...formData, email: e.target.value})}
             />
 
-            <input 
-              type="tel"
-              placeholder="+1 (555) 000-0000"
-              className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-white placeholder:text-zinc-400 focus:outline-none focus:border-zinc-600"
-              value={formData.phone}
-              onChange={(e) => setFormData({...formData, phone: e.target.value})}
+            <textarea
+              placeholder="Your message"
+              className="w-full px-4 py-3 h-32 rounded-lg bg-zinc-900 border border-zinc-800 text-white placeholder:text-zinc-400 focus:outline-none focus:border-zinc-600 resize-none"
+              value={formData.message}
+              onChange={(e) => setFormData({...formData, message: e.target.value})}
             />
 
             <button 
@@ -87,6 +78,6 @@ export  function ContactForm() {
         </motion.div>
       </div>
       
-      </main>
+    </main>
   )
 }

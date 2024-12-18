@@ -8,23 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      animation:{
-        'move-left':'move-left 1s linear infinite'
+      keyframes: {
+        blink: {
+          '0%, 100%': { transform: 'scale(1)' }, // Original size
+          '50%': { transform: 'scale(1.2)' },   // Enlarged size
+        },
       },
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      animation: {
+        blink: 'blink 1.5s ease-in-out infinite', // Animation duration and repeat
       },
-      keyframes:{
-        'move-left':{
-          '0%':{
-            transform:"translateX(0%)"
-          },
-          '100%':{
-            transform:"translateX(-50%)"
-          },
-        }
-      }
     },
   },
   plugins: [],

@@ -34,7 +34,7 @@ export const Navbar = () => {
   const navMenuItems = [
     { label: 'Projects', id: '#projects' },
     { label: 'Services', id: '#services' },
-    { label: 'Contact', id: '#contact' }
+    // { label: 'Contact', id: '#contact' }
   ];
 
   return (
@@ -101,14 +101,22 @@ export const Navbar = () => {
               {item.label}
             </li>
           ))}
+           <li
+              key={'#contact'}
+              onClick={() => handleScroll('#contact')}
+              className="cursor-pointer hover:text-white transition-colors 
+              border-b pb-3 border-black/20"
+            >
+              {'Contact Us'}
+            </li>
         </ul>
         
-        <Button
+        {/* <Button
           onClick={() => handleScroll("#contact")}
           className="w-full mt-6 tracking-wide text-lg"
         >
           Contact Us
-        </Button>
+        </Button> */}
       </motion.div>
     </motion.nav>
   );

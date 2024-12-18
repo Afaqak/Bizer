@@ -13,8 +13,8 @@ export default function Home() {
       <InfiniteSlider />
       <ServicesSection />
       <ProjectsSection/>
-      <InfiniteSlider rotate={0}/>
-      <SocialLinks/>
+      {/* <InfiniteSlider rotate={0}/> */}
+      {/* <SocialLinks/> */}
       <GetInTouch/>
       <ContactForm/>
       <Footer/>
