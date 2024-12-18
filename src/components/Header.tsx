@@ -106,7 +106,7 @@ export const Header = () => {
       </motion.div>
     </motion.h1>
       <motion.p
-        className="text-white tracking-wider"
+        className="text-white tracking-wider text-center"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.5 }}
