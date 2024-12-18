@@ -44,9 +44,9 @@ export const Header = () => {
   };
 
   return (
-    <header className="bg-[#1C1C1C] flex px-4 items-center flex-col gap-16 justify-center w-full h-screen xl:h-[calc(100vh-20px)]">
+    <header className="bg-[#1C1C1C] flex px-4 items-center mt-6 flex-col gap-16 justify-center w-full h-screen xl:h-[calc(100vh-20px)]">
       <motion.h1
-      className="text-2xl sm:text-3xl md:text-4xl xl:text-6xl 
+      className="text-[1.8rem] md:text-4xl xl:text-6xl 
       text-center justify-center relative flex flex-col 
       items-center font-semibold text-white leading-normal 
       space-y-2 sm:space-y-4 px-4"

@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { asap_condensed } from "@/lib/fonts";
 import { Header } from "@/components/Header";
+import { Toaster } from "sonner";
 
 
 export const metadata: Metadata = {
@@ -35,6 +36,7 @@ export default function RootLayout({
         <Navbar />
         <Header />
         {children}
+        <Toaster/>
       </body>
     </html>
   );
