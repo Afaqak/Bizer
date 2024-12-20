@@ -47,7 +47,7 @@ export const Footer = () => {
         <div>
           <h4 className="text-xl font-semibold mb-4">Contact</h4>
           <div className="space-y-2">
-            <p> Email: <a href="mailto:hello@hacktoast.com" className="text-black-500 hover:underline">hello@hacktoast.com</a></p>
+            <p><a href="frivxd10@gmail.com" className="text-black-500 hover:underline">frivxd10@gmail.com</a></p>
             {/* <Button 
               onClick={() => handleScroll("#contact")}
               className="mt-4 w-full"
