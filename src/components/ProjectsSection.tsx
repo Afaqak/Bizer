@@ -1,9 +1,32 @@
 "use client";
 
-import { motion, useScroll, useTransform, useAnimation } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import ProjectCard from "./ProjectCard";
 import { projects } from "@/lib/data";
+
+// Add JSON-LD schema for projects section
+const projectsSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": projects.map((project, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "CreativeWork",
+      "name": project.title,
+      "description": project.description,
+      "image": `https://hacktoast.com${project.image}`,
+      "keywords": project.tags.join(", ")
+    }
+  })),
+  "numberOfItems": projects.length,
+  "provider": {
+    "@type": "Organization",
+    "name": "HackToast",
+    "url": "https://hacktoast.com"
+  }
+};
 
 export default function ProjectsSection() {
   const ref = useRef(null);
@@ -41,9 +64,15 @@ export default function ProjectsSection() {
       id="projects"
       ref={ref}
       className="w-full px-4 py-20 bg-[#1C1C1C] overflow-hidden"
+      aria-label="Our Projects"
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsSchema) }}
+      />
+
       <div className="max-w-7xl mx-auto">
-        <motion.div
+        <motion.header
           style={{
             y: headlineY,
             opacity: headlineOpacity,
@@ -56,9 +85,13 @@ export default function ProjectsSection() {
             <br />
             in the digital world
           </h2>
-        </motion.div>
+        </motion.header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          role="list"
+          aria-label="Projects Gallery"
+        >
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -70,6 +103,7 @@ export default function ProjectsSection() {
                 amount: 0.2,
               }}
               variants={cardVariants}
+              role="listitem"
             >
               <ProjectCard project={project} index={index} />
             </motion.div>

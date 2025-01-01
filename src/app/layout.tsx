@@ -5,6 +5,8 @@ import { Navbar } from "@/components/Navbar";
 import { asap_condensed } from "@/lib/fonts";
 import { Header } from "@/components/Header";
 import { Toaster } from "sonner";
+import Script from "next/script";
+import JsonLd from "@/lib/JsonLd";
 
 export const metadata: Metadata = {
   title: "HackToast - Empowering Innovation",
@@ -71,6 +73,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${asap_condensed.className} antialiased`}>
+      <JsonLd />
         <Navbar />
         <Header />
         {children}

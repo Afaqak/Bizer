@@ -1,8 +1,32 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Button } from "./Button";
 import { Menu, X } from 'lucide-react';
+
+// Add JSON-LD schema for navigation
+const navigationSchema = {
+  "@context": "https://schema.org",
+  "@type": "SiteNavigationElement",
+  "name": "Main Navigation",
+  "hasPart": [
+    {
+      "@type": "WebPage",
+      "name": "Projects",
+      "url": "https://hacktoast.com/#projects"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Services",
+      "url": "https://hacktoast.com/#services"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Contact",
+      "url": "https://hacktoast.com/#contact"
+    }
+  ]
+};
 
 export const Navbar = () => {
   const [hidden, setHidden] = useState(false);
@@ -11,10 +35,8 @@ export const Navbar = () => {
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
-   
     if (previous && latest > previous && latest > 100) {
       setHidden(true);
-      // Close mobile menu when scrolling down
       setIsMobileMenuOpen(false);
     }
     else if (previous && latest < previous) {
@@ -26,7 +48,6 @@ export const Navbar = () => {
     const section = document.querySelector(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
-      // Close mobile menu after navigation
       setIsMobileMenuOpen(false);
     }
   };
@@ -34,91 +55,136 @@ export const Navbar = () => {
   const navMenuItems = [
     { label: 'Projects', id: '#projects' },
     { label: 'Services', id: '#services' },
-    // { label: 'Contact', id: '#contact' }
   ];
 
   return (
-    <motion.nav
+    <motion.header
+      role="banner"
       variants={{
         visible: { y: 0 },
         hidden: { y: "-100%" }
       }}
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="fixed top-0 left-0 right-0 w-full overflow-hidden z-50 bg-[#FABF29] flex justify-between items-center px-4 md:px-10 h-[70px] shadow-md"
+      className="fixed top-0 left-0 right-0 w-full overflow-hidden z-50 bg-[#FABF29] shadow-md"
     >
-      {/* Logo */}
-      <h2 className="font-bold text-2xl md:text-4xl tracking-wide">HackToast</h2>
-     
-      {/* Desktop Navigation */}
-      <ul className="hidden md:flex gap-6 text-lg items-center">
-        {navMenuItems.map((item) => (
-          <li
-            key={item.id}
-            onClick={() => handleScroll(item.id)}
-            className="cursor-pointer hover:text-white transition-colors"
-          >
-            {item.label}
-          </li>
-        ))}
-      </ul>
-     
-      {/* Desktop Contact Button */}
-      <Button
-        onClick={() => handleScroll("#contact")}
-        className="hidden md:block tracking-wide text-lg px-6 py-0"
-      >
-        Contact Us
-      </Button>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(navigationSchema) }}
+      />
 
-      <div className="md:hidden z-[9999999]">
-        <button 
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="focus:outline-none"
+      <nav 
+        className="flex justify-between items-center px-4 md:px-10 h-[70px]"
+        aria-label="Main navigation"
+      >
+        {/* Logo */}
+        <a 
+          href="/" 
+          className="font-bold text-2xl md:text-4xl tracking-wide"
+          aria-label="HackToast - Home"
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      
-
-      {/* Mobile Menu */}
-      <motion.div
-        initial={{ x: "100%" }}
-        animate={{ x: isMobileMenuOpen ? 0 : "100%" }}
-        transition={{ type: "tween" }}
-        className="fixed top-[65px] right-0 w-3/4 bg-[#FABF29] 
-        h-[calc(100vh-70px)] md:hidden z-50 shadow-lg p-6"
-      >
-        <ul className="flex flex-col gap-6 text-xl">
+          HackToast
+        </a>
+       
+        {/* Desktop Navigation */}
+        <ul 
+          className="hidden md:flex gap-6 text-lg items-center"
+          role="menubar"
+          aria-label="Desktop navigation"
+        >
           {navMenuItems.map((item) => (
             <li
               key={item.id}
-              onClick={() => handleScroll(item.id)}
-              className="cursor-pointer hover:text-white transition-colors 
-              border-b pb-3 border-black/20"
+              role="none"
             >
-              {item.label}
+              <a
+                href={item.id}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScroll(item.id);
+                }}
+                className="cursor-pointer hover:text-white transition-colors"
+                role="menuitem"
+              >
+                {item.label}
+              </a>
             </li>
           ))}
-           <li
-              key={'#contact'}
-              onClick={() => handleScroll('#contact')}
-              className="cursor-pointer hover:text-white transition-colors 
-              border-b pb-3 border-black/20"
-            >
-              {'Contact Us'}
-            </li>
         </ul>
-        
-        {/* <Button
+       
+        {/* Desktop Contact Button */}
+        <Button
           onClick={() => handleScroll("#contact")}
-          className="w-full mt-6 tracking-wide text-lg"
+          className="hidden md:block tracking-wide text-lg px-6 py-0"
+          aria-label="Contact Us"
         >
           Contact Us
-        </Button> */}
-      </motion.div>
-    </motion.nav>
+        </Button>
+
+        {/* Mobile Menu Button */}
+        <button 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden focus:outline-none"
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu"
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+
+        {/* Mobile Menu */}
+        <motion.div
+          id="mobile-menu"
+          initial={{ x: "100%" }}
+          animate={{ x: isMobileMenuOpen ? 0 : "100%" }}
+          transition={{ type: "tween" }}
+          className="fixed top-[65px] right-0 w-3/4 bg-[#FABF29] h-[calc(100vh-70px)] md:hidden z-50 shadow-lg p-6"
+          aria-hidden={!isMobileMenuOpen}
+          role="dialog"
+          aria-label="Mobile navigation menu"
+        >
+          <nav>
+            <ul 
+              className="flex flex-col gap-6 text-xl"
+              role="menu"
+              aria-label="Mobile navigation"
+            >
+              {navMenuItems.map((item) => (
+                <li
+                  key={item.id}
+                  role="none"
+                >
+                  <a
+                    href={item.id}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleScroll(item.id);
+                    }}
+                    className="cursor-pointer hover:text-white transition-colors border-b pb-3 border-black/20 block"
+                    role="menuitem"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+              <li role="none">
+                <a
+                  href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleScroll('#contact');
+                  }}
+                  className="cursor-pointer hover:text-white hover:underline hover:bg-black/40 transition-colors border-b pb-3 border-black/20 block"
+                  role="menuitem"
+                >
+                  Contact Us
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </motion.div>
+      </nav>
+    </motion.header>
   );
 };
 

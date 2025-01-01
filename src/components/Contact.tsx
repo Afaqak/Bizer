@@ -5,6 +5,20 @@ import { motion } from "framer-motion";
 import sendMail from "@/lib/email";
 import { toast } from "sonner";
 
+// Add JSON-LD schema for the contact page
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact HackToast",
+  "description": "Get in touch with HackToast for web development, design, and digital solutions.",
+  "url": "https://hacktoast.com/#contact",
+  "mainEntity": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "availableLanguage": "English"
+  }
+};
+
 export function ContactForm() {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -53,10 +67,17 @@ export function ContactForm() {
   };
 
   return (
-    <main
+    <section
       id="contact"
       className="min-h-screen mb-[28rem] md:mb-[14rem] sticky top-0 z-20 flex items-center justify-center bg-[#1C1C1C] text-white"
+      aria-label="Contact Form Section"
     >
+      {/* Add JSON-LD script */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
+      />
+
       <div className="container max-w-xl bg-[#26241F] rounded-mx shadow mx-auto p-10">
         <motion.div
           className="space-y-8"
@@ -64,62 +85,89 @@ export function ContactForm() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="space-y-2">
-            <h1 className="text-4xl font-bold">Contact Us</h1>
+          <header className="space-y-2">
+            <h2 className="text-4xl font-bold" id="contact-heading">Contact Us</h2>
             <p className="text-gray-400">
               Need help with something? Want to discuss an idea? Get in touch
               with us and we'll get back to you ASAP!
             </p>
-          </div>
+          </header>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form 
+            onSubmit={handleSubmit} 
+            className="space-y-6"
+            aria-labelledby="contact-heading"
+          >
             <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="firstName" className="sr-only">First name</label>
+                <input
+                  id="firstName"
+                  type="text"
+                  placeholder="First name"
+                  className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-white placeholder:text-zinc-400 focus:outline-none focus:border-zinc-600"
+                  value={formData.firstName}
+                  onChange={(e) =>
+                    setFormData({ ...formData, firstName: e.target.value })
+                  }
+                  aria-required="true"
+                />
+              </div>
+              <div>
+                <label htmlFor="lastName" className="sr-only">Last name</label>
+                <input
+                  id="lastName"
+                  type="text"
+                  placeholder="Last name"
+                  className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-white placeholder:text-zinc-400 focus:outline-none focus:border-zinc-600"
+                  value={formData.lastName}
+                  onChange={(e) =>
+                    setFormData({ ...formData, lastName: e.target.value })
+                  }
+                  aria-required="true"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="email" className="sr-only">Email</label>
               <input
-                type="text"
-                placeholder="First name"
+                id="email"
+                type="email"
+                placeholder="Email"
                 className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-white placeholder:text-zinc-400 focus:outline-none focus:border-zinc-600"
-                value={formData.firstName}
+                value={formData.email}
                 onChange={(e) =>
-                  setFormData({ ...formData, firstName: e.target.value })
+                  setFormData({ ...formData, email: e.target.value })
                 }
-              />
-              <input
-                type="text"
-                placeholder="Last name"
-                className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-white placeholder:text-zinc-400 focus:outline-none focus:border-zinc-600"
-                value={formData.lastName}
-                onChange={(e) =>
-                  setFormData({ ...formData, lastName: e.target.value })
-                }
+                aria-required="true"
               />
             </div>
 
-            <input
-              type="email"
-              placeholder="Email"
-              className="w-full px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-white placeholder:text-zinc-400 focus:outline-none focus:border-zinc-600"
-              value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-            />
-
-            <textarea
-              placeholder="Your message"
-              className="w-full px-4 py-3 h-32 rounded-lg bg-zinc-900 border border-zinc-800 text-white placeholder:text-zinc-400 focus:outline-none focus:border-zinc-600 resize-none"
-              value={formData.message}
-              onChange={(e) =>
-                setFormData({ ...formData, message: e.target.value })
-              }
-            />
+            <div>
+              <label htmlFor="message" className="sr-only">Your message</label>
+              <textarea
+                id="message"
+                placeholder="Your message"
+                className="w-full px-4 py-3 h-32 rounded-lg bg-zinc-900 border border-zinc-800 text-white placeholder:text-zinc-400 focus:outline-none focus:border-zinc-600 resize-none"
+                value={formData.message}
+                onChange={(e) =>
+                  setFormData({ ...formData, message: e.target.value })
+                }
+                aria-required="true"
+              />
+            </div>
 
             <button
               type="submit"
               className="w-full bg-white text-black font-semibold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors flex items-center justify-center"
-              disabled={isSubmitting} // Disable button while submitting
+              disabled={isSubmitting}
+              aria-busy={isSubmitting}
             >
               {isSubmitting ? (
-                <span className="loader">sending...</span> // Replace this with a spinner
+                <span className="loader" role="status" aria-label="Sending message">
+                  sending...
+                </span>
               ) : (
                 "Get in touch"
               )}
@@ -127,6 +175,6 @@ export function ContactForm() {
           </form>
         </motion.div>
       </div>
-    </main>
+    </section>
   );
 }

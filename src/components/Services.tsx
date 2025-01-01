@@ -1,3 +1,5 @@
+"use client";
+
 import { Plus, Minus } from "lucide-react";
 import {
   motion,
@@ -7,6 +9,49 @@ import {
 } from "framer-motion";
 import { useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+
+// Add JSON-LD schema for services
+const servicesSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "provider": {
+    "@type": "ProfessionalService",
+    "name": "HackToast",
+    "url": "https://hacktoast.com"
+  },
+  "serviceType": "Web Development Services",
+  "areaServed": "Worldwide",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Web Development Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Custom Website Development",
+          "description": "Tailored solutions that reflect your unique brand identity and business goals, ensuring a website designed specifically for your needs."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Search Engine Optimization (SEO)",
+          "description": "Comprehensive SEO strategies to improve your website's visibility, driving organic traffic and enhancing your online presence."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Web-Based Solutions",
+          "description": "Innovative web solutions that streamline your business processes, from customer management to inventory tracking, all accessible online."
+        }
+      }
+    ]
+  }
+};
 
 export default function ServicesSection() {
   const ref = useRef(null);
@@ -51,7 +96,17 @@ export default function ServicesSection() {
   ];
 
   return (
-    <div id="services" className="px-4 py-20 md:py-48 bg-[#1C1C1C] text-white">
+    <section 
+      id="services" 
+      className="px-4 py-20 md:py-48 bg-[#1C1C1C] text-white"
+      aria-label="Our Services"
+    >
+      {/* Add JSON-LD script */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
+      />
+
       <motion.div
         transition={{
           type: "spring",
@@ -63,43 +118,38 @@ export default function ServicesSection() {
         ref={ref}
         className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16"
       >
-        {/* Left Column */}
+        {/* Left Column - Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="relative flex h-[380px] md:h-full md:max-h-[539.556px] items-center justify-center flex-col bg-[#26241F]"
         >
-          <h1 className="text-4xl md:text-5xl xl:text-5xl tracking-wide text-center font-bold leading-snug">
-            <span className="text-[#FABF29]">Fueling</span> growth
-            <br />
-            with innovative design and
-          </h1>
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.3, type: "spring" }}
-            className="bg-orange-500 text-center text-3xl mx-4 md:text-4xl px-6 py-3 text-white inline-block mt-4 rounded-lg"
-          >
-            <span className="text-4xl font-bold">Strategic Solutions</span>
-          </motion.div>
-
-          {/* Purple splash decoration */}
-          <motion.div
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ delay: 0.6, type: "spring" }}
-            className="absolute bottom-0 left-0 w-24 h-24"
-          >
-          </motion.div>
+          <header>
+            <h2 className="text-4xl md:text-5xl xl:text-5xl tracking-wide text-center font-bold leading-snug">
+              <span className="text-[#FABF29]">Fueling</span> growth
+              <br />
+              with innovative design and
+            </h2>
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.3, type: "spring" }}
+              className="bg-orange-500 text-center text-3xl mx-4 md:text-4xl px-6 py-3 text-white inline-block mt-4 rounded-lg"
+            >
+              <span className="text-4xl font-bold">Strategic Solutions</span>
+            </motion.div>
+          </header>
         </motion.div>
 
-        {/* Right Column */}
+        {/* Right Column - Services List */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
           className="space-y-6 bg-[#26241F] flex h-full min-h-[539.556px] p-10 flex-col"
+          role="list"
+          aria-label="Our Services List"
         >
           {services.map((service, index) => (
             <motion.div
@@ -107,6 +157,7 @@ export default function ServicesSection() {
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: index * 0.1 + 0.5 }}
+              role="listitem"
             >
               <button
                 onClick={() =>
@@ -115,14 +166,17 @@ export default function ServicesSection() {
                   )
                 }
                 className="w-full group"
+                aria-expanded={expandedService === service.title}
+                aria-controls={`service-content-${index}`}
               >
                 <motion.div
-                  className={cn("flex text-start items-center justify-between border-b border-zinc-700 py-4",
-                    index===services?.length-1 && 'border-b-0'
+                  className={cn(
+                    "flex text-start items-center justify-between border-b border-zinc-700 py-4",
+                    index === services?.length - 1 && "border-b-0"
                   )}
                   layout
                 >
-                  <motion.h2
+                  <motion.h3
                     className={`text-2xl lg:text-4xl font-bold ${
                       expandedService === service.title
                         ? "text-white"
@@ -131,10 +185,11 @@ export default function ServicesSection() {
                     layout
                   >
                     {service.title}
-                  </motion.h2>
+                  </motion.h3>
                   <motion.div
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
+                    aria-hidden="true"
                   >
                     {expandedService === service.title ? (
                       <Minus className="w-6 h-6 text-[#FABF29]" />
@@ -146,6 +201,7 @@ export default function ServicesSection() {
                 <AnimatePresence initial={false}>
                   {expandedService === service.title && (
                     <motion.div
+                      id={`service-content-${index}`}
                       initial={{ opacity: 0, height: 0 }}
                       animate={{
                         opacity: 1,
@@ -183,6 +239,6 @@ export default function ServicesSection() {
           ))}
         </motion.div>
       </motion.div>
-    </div>
+    </section>
   );
 }
