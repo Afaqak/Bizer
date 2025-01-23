@@ -125,7 +125,7 @@ export default function ServicesSection() {
           transition={{ duration: 0.6 }}
           className="relative flex h-[380px] md:h-full md:max-h-[539.556px] items-center justify-center flex-col bg-[#26241F]"
         >
-          <header>
+          <header className='flex items-center justify-center'>
             <h2 className="text-4xl md:text-5xl xl:text-5xl tracking-wide text-center font-bold leading-snug">
               <span className="text-[#FABF29]">Fueling</span> growth
               <br />
