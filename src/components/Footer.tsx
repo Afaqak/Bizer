@@ -32,12 +32,23 @@ const footerSchema = {
   "contactPoint": {
     "@type": "ContactPoint",
     "email": "frivxd10@gmail.com",
+    "telephone": "+923305823280",
     "contactType": "customer service"
   }
 };
 
 export const Footer = () => {
   const handleScroll = (sectionId: string) => {
+    // Special case for contact section
+    if (sectionId === '#contact') {
+      const contactSection = document.querySelector('.contact-section');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+    }
+    
+    // Default behavior for other sections
     const section = document.querySelector(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
@@ -46,7 +57,7 @@ export const Footer = () => {
 
   return (
     <footer 
-      className="bg-[#FABF29] text-white py-12 h-[28rem] md:h-[14rem] z-50 sticky top-0 px-10"
+      className="bg-black text-white border-t border-zinc-800 py-12 md:py-10 mt-10 z-10 px-10 relative"
       role="contentinfo"
       aria-label="Site Footer"
     >
@@ -59,6 +70,7 @@ export const Footer = () => {
         {/* Company Information */}
         <div>
           <h2 className="text-3xl font-bold mb-4">HackToast</h2>
+          <p className="text-gray-400">We design modern, high-performing websites that help businesses stand out in the digital landscape.</p>
         </div>
 
         {/* Navigation Links */}
@@ -72,7 +84,7 @@ export const Footer = () => {
                   e.preventDefault();
                   handleScroll("#services");
                 }}
-                className="cursor-pointer hover:text-white transition-colors"
+                className="cursor-pointer hover:text-[#4AFA4A] transition-colors"
                 role="menuitem"
               >
                 Services
@@ -85,7 +97,7 @@ export const Footer = () => {
                   e.preventDefault();
                   handleScroll("#projects");
                 }}
-                className="cursor-pointer hover:text-white transition-colors"
+                className="cursor-pointer hover:text-[#4AFA4A] transition-colors"
                 role="menuitem"
               >
                 Projects
@@ -98,7 +110,7 @@ export const Footer = () => {
                   e.preventDefault();
                   handleScroll("#contact");
                 }}
-                className="cursor-pointer hover:text-white transition-colors"
+                className="cursor-pointer hover:text-[#4AFA4A] transition-colors"
                 role="menuitem"
               >
                 Contact
@@ -114,10 +126,19 @@ export const Footer = () => {
             <p>
               <a 
                 href="mailto:frivxd10@gmail.com" 
-                className="text-black-500 hover:underline"
+                className="text-[#4AFA4A] hover:underline"
                 aria-label="Email us"
               >
                 frivxd10@gmail.com
+              </a>
+            </p>
+            <p className="mt-2">
+              <a 
+                href="tel:+923305823280" 
+                className="text-gray-400 hover:text-[#4AFA4A]"
+                aria-label="Call us"
+              >
+                +92 330 582 3280
               </a>
             </p>
           </address>

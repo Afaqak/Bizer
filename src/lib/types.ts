@@ -4,4 +4,6 @@ export interface Project {
     description: string;
     image: string;
     tags: string[];
+    liveUrl?: string;
+    caseStudyUrl?: string;
   }

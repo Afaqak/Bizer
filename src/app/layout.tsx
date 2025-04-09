@@ -1,53 +1,30 @@
-import type { Metadata } from "next";
-
 import "./globals.css";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
-import { asap_condensed } from "@/lib/fonts";
-import { Header } from "@/components/Header";
 import { Toaster } from "sonner";
 import Script from "next/script";
 import JsonLd from "@/lib/JsonLd";
+import { Header } from "@/components/Header";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "HackToast - Empowering Innovation",
-  description:
-    "HackToast is a leading tech startup revolutionizing the digital landscape. We specialize in cutting-edge solutions, innovative technologies, and transformative services to help businesses and individuals thrive in the digital age.",
-  keywords: [
-    "Tech Startup",
-    "Innovative Solutions",
-    "Technology Services",
-    "Digital Transformation",
-    "Software Development",
-    "AI Solutions",
-    "Tech Innovation",
-    "HackToast",
-    "Digital Revolution",
-    "Cutting-Edge Technology",
-  ],
+  title: "HackToast | Modern Web Design & Development",
+  description: "Custom web design, development and digital solutions that drive growth for your business.",
+  keywords: "web design, web development, UI/UX, digital solutions, HackToast",
   openGraph: {
-    title: "HackToast - Empowering Innovation",
-    description:
-      "HackToast is a leading tech startup revolutionizing the digital landscape with cutting-edge solutions, innovative technologies, and transformative services.",
+    title: "HackToast | Modern Web Design & Development",
+    description: "Custom web design, development and digital solutions that drive growth for your business.",
     url: "https://hacktoast.com",
     siteName: "HackToast",
+    locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: "https://hacktoast.com/logo.png",
-        width: 1200,
-        height: 630,
-        alt: "HackToast Logo",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "HackToast - Empowering Innovation",
-    description:
-      "HackToast is a leading tech startup revolutionizing the digital landscape with cutting-edge solutions, innovative technologies, and transformative services.",
-    site: "@hacktoast",
-    creator: "@hacktoast",
-    // images: ["https://hacktoast.com/twitter-card-image.jpg"],
+    title: "HackToast | Modern Web Design & Development",
+    description: "Custom web design, development and digital solutions that drive growth for your business.",
   },
   robots: {
     index: true,
@@ -67,17 +44,27 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${asap_condensed.className} antialiased`}>
-      <JsonLd />
+      <body className={`${inter.className} bg-black text-white overflow-x-hidden`}>
+        <JsonLd />
         <Navbar />
         <Header />
         {children}
-        <Toaster />
+        <Toaster 
+          position="top-right"
+          toastOptions={{
+            style: {
+              background: "#1f1f1f",
+              color: "#ffffff",
+              border: "1px solid #333333",
+            },
+            className: "toast-class",
+          }}
+        />
       </body>
     </html>
   );

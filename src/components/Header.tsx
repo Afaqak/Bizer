@@ -10,14 +10,14 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "HackToast",
-  "description": "Transforming Ideas into Digital Reality. We are a team of dedicated engineers committed to innovative web solutions.",
-  "slogan": "Transforming Ideas into Digital Reality",
+  "description": "We Design Websites That Captivate, Convert, and Elevate Your Brand. Modern tech solutions for forward-thinking businesses.",
+  "slogan": "We Design Websites That Captivate, Convert, and Elevate Your Brand",
   "url": "https://hacktoast.com",
   "knowsAbout": [
-    "Web Development",
-    "Digital Solutions",
-    "Business Growth",
-    "Innovation"
+    "Web Design",
+    "UI/UX Design",
+    "Landing Page Design",
+    "E-commerce Development"
   ]
 };
 
@@ -60,7 +60,7 @@ export const Header = () => {
 
   return (
     <section 
-      className="bg-[#1C1C1C] flex px-4 items-center mt-6 flex-col gap-16 justify-center w-full h-screen xl:h-[calc(100vh-20px)]"
+      className="bg-black flex px-4 items-center mt-6 flex-col gap-16 justify-center w-full h-screen xl:h-[calc(100vh-20px)]"
       aria-label="Hero Section"
     >
       <script
@@ -69,7 +69,7 @@ export const Header = () => {
       />
 
       <motion.div
-        className="text-[1.8rem] md:text-4xl xl:text-6xl text-center justify-center relative flex flex-col items-center font-semibold text-white leading-normal space-y-2 sm:space-y-4 px-4"
+        className="text-[1.8rem] md:text-4xl xl:text-6xl text-center justify-center relative flex flex-col items-center font-bold text-white leading-normal space-y-2 sm:space-y-4 px-4"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -80,31 +80,28 @@ export const Header = () => {
           variants={starVariants}
           aria-hidden="true"
         >
-          <Star className="fill-[#FABF29] stroke-[#FABF29] size-8 sm:size-12" />
+          <Star className="fill-[#4AFA4A] stroke-[#4AFA4A] size-8 sm:size-12" />
         </motion.div>
 
         <motion.h1 
           variants={itemVariants} 
-          className="text-center break-words w-full"
+          className="text-center"
         >
-          Transforming <span className="text-[#F54E26]">Ideas</span> into Digital Reality
+          We Design <span className="text-[#4AFA4A]">Websites</span> That Captivate
         </motion.h1>
         
         <motion.p 
           variants={itemVariants} 
-          className="text-center break-words w-full"
+          className="text-center"
         >
-          Innovative solutions that{" "}
-          <span className="text-[#82FF1F]">Deliver Results</span>
+          Convert, and <span className="text-[#4AFA4A]">Elevate Your Brand</span>
         </motion.p>
         
         <motion.p 
           variants={itemVariants} 
-          className="text-center break-words w-full"
+          className="text-center text-gray-300 text-3xl xl:text-4xl"
         >
-          Driving {" "}
-          <span className="text-[#C66AFF]">Growth</span>, Unlocking{" "}
-          <span className="text-[#C66AFF]">Potential</span>
+          Modern solutions for <span className="text-white font-extrabold">forward-thinking businesses</span>
         </motion.p>
 
         <motion.div
@@ -112,7 +109,7 @@ export const Header = () => {
           variants={starVariants}
           aria-hidden="true"
         >
-          <Star className="fill-[#82FF1F] animate-pulse stroke-[#82FF1F] size-8 sm:size-12" />
+          <Star className="fill-[#4AFA4A] animate-pulse stroke-[#4AFA4A] size-8 sm:size-12" />
         </motion.div>
       </motion.div>
 
@@ -122,13 +119,13 @@ export const Header = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.5 }}
       >
-        We are a team of dedicated engineers committed to make your business go{" "}
+        With years of experience, we specialize in crafting
         <motion.span
-          className={cn("text-2xl", bangers.className)}
+          className={cn("text-2xl ml-2 font-bold text-[#4AFA4A]", bangers.className)}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          Kaboom!
+          VISUALLY STUNNING, USER-FRIENDLY WEBSITES
         </motion.span>
       </motion.p>
     </section>

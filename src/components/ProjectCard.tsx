@@ -27,7 +27,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
-      className="group relative overflow-hidden rounded-2xl bg-zinc-900"
+      className="group relative overflow-hidden rounded-xl border border-zinc-800 bg-black hover:border-[#4AFA4A]/50 transition-all duration-300"
       role="article"
       aria-labelledby={`project-title-${index}`}
     >
@@ -48,12 +48,12 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       </div>
 
       <div 
-        className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
+        className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300" 
         aria-hidden="true"
       />
 
       <div 
-        className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+        className="absolute bottom-0 left-0 right-0 p-6 translate-y-0 transition-transform duration-300"
         role="contentinfo"
       >
         <div 
@@ -64,7 +64,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="px-2 py-1 text-xs font-medium bg-purple-600 text-white rounded-full"
+              className="px-2 py-1 text-xs font-medium bg-[#4AFA4A] text-black rounded-full"
               role="listitem"
             >
               {tag}

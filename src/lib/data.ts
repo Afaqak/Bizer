@@ -5,9 +5,11 @@ export const projects: Project[] = [
     id: "1",
     title: "Sipath",
     description:
-      "Sipath.com is a welcoming web-based portal tailored for educators, makers, and students. It’s a destination for swift distribution, purchase, and discovery of educational resources such as courses, films, literature, assessments, and more",
+      "Sipath.com is a welcoming web-based portal tailored for educators, makers, and students. It's a destination for swift distribution, purchase, and discovery of educational resources such as courses, films, literature, assessments, and more",
     image: "/images/sipath.png",
     tags: ["NextJs", "Node", "Postgres", "Framer-Motion"],
+    liveUrl: "https://sipath.com",
+    caseStudyUrl: "/case-studies/sipath"
   },
   {
     id: "2",
@@ -16,6 +18,7 @@ export const projects: Project[] = [
       "An animated portfolio built with gsap with focus on parallax and micro animations.",
     image: "/images/jabulani.png",
     tags: ["NextJs", "Tailwind", "GSAP"],
+    liveUrl: "https://jabulani.com"
   },
   {
     id: "3",
@@ -24,6 +27,8 @@ export const projects: Project[] = [
       "A platform focused on pushing the boundaries of innovation by leveraging specialized LLM technology and advanced generative multi-agent system, pioneering the next generation of gaming.",
     image: "/images/taulab.png",
     tags: ["NextJs", "ThreeJs", "Tailwind"],
+    liveUrl: "https://taublab.com",
+    caseStudyUrl: "/case-studies/taublab"
   },
   {
     id: "4",
@@ -32,6 +37,7 @@ export const projects: Project[] = [
       "Transcom is a global customer service company that specializes in providing digital innovations and smart solutions to support brands in the tech, e-commerce, and internet space",
     image: "/images/transcom.png",
     tags: ["Js", "Css", "Html", "GSAP"],
+    liveUrl: "https://transcom.com"
   },
   {
     id: "5",
@@ -40,6 +46,7 @@ export const projects: Project[] = [
       "A platform which helps you locate adhd medications from locating the medications to delivering them we do it all.",
     image: "/images/neuro.png",
     tags: ["NextJs", "Supabase", "Tailwind", "Mapbox"],
+    liveUrl: "https://neurotablet.com"
   },
   {
     id: "6",
@@ -48,6 +55,8 @@ export const projects: Project[] = [
       "A vibrant landing page showcasing fresh fruits and vegetables, emphasizing quality, freshness, and healthy living. Designed to attract and engage customers with visually appealing layouts and clear calls-to-action.",
     image: "/images/aloko.png",
     tags: ["NextJs", "Tailwind"],
+    liveUrl: "https://alokofarms.com",
+    caseStudyUrl: "/case-studies/alokofarms"
   },
   {
     id: "7",
@@ -56,8 +65,8 @@ export const projects: Project[] = [
       "An agency which provides cutting-edge technology solutions to clients to enhance their productivity, streamline their processes, and improve their overall business operations.",
     image: "/images/brownbrains.png",
     tags: ["React", "Tailwind", "Framer-Motion"],
+    liveUrl: "https://brownbrains.com"
   },
-
   {
     id: "8",
     title: "Local Caregiver",
@@ -65,5 +74,6 @@ export const projects: Project[] = [
       "Local Caregiver is a platfrom where caregivers can offer services to care seekers",
     image: "/images/caregiver.png",
     tags: ["MongoDB", "React", "NodeJS", "express"],
+    liveUrl: "https://localcaregiver.com"
   },
 ];

@@ -31,8 +31,8 @@ export function GetInTouch() {
   };
 
   return (
-    <main className="py-20 md:py-42 sticky top-0 z-10 bg-[#1C1C1C]">
-      <motion.section 
+    <section className="py-20 md:py-32 bg-black">
+      <motion.div 
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
@@ -46,15 +46,15 @@ export function GetInTouch() {
           >
             <motion.span 
               variants={textVariants}
-              className="block text-pink-300"
+              className="block text-white"
             >
-              LET'S MAKE
+              LET'S WORK
             </motion.span>
             <motion.span 
               variants={textVariants}
-              className="block text-pink-300"
+              className="block text-[#4AFA4A]"
             >
-              SOMETHING GREAT!
+              TOGETHER!
             </motion.span>
           </motion.h1>
 
@@ -62,24 +62,32 @@ export function GetInTouch() {
             variants={textVariants}
             className="text-gray-400 text-xl md:text-2xl max-w-3xl mx-auto"
           >
-            If you're looking to build a website or simply want to chat about your ideas, we’d love to hear from you. Feel free to reach out and let’s bring your vision to life!
+            If you're looking to elevate your digital presence with a website that captivates your audience and converts visitors into customers, we'd love to collaborate with you on your next project.
           </motion.p>
 
           <motion.div
             variants={textVariants}
           >
             <motion.a
-              href="#contact"
+              href="./#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 text-4xl md:text-5xl font-bold text-orange-500 hover:text-orange-400 transition-colors "
+              onClick={(e) => {
+                e.preventDefault();
+                const contactSection = document.querySelector('.contact-section');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              className="inline-flex items-center gap-2 text-4xl md:text-5xl font-bold text-[#4AFA4A] hover:text-[#3ED63E] transition-colors"
             >
               GET IN TOUCH
-              {/* <ArrowRight className="text-3xl animate-move-left ml-2 md:text-4xl" /> */}
+              <ArrowRight className="w-10 h-10 ml-2" />
             </motion.a>
           </motion.div>
         </div>
-      </motion.section>
-    </main>
+      </motion.div>
+    </section>
   );
 }
