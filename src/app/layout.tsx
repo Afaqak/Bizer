@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import { Toaster } from "sonner";
-import Script from "next/script";
 import JsonLd from "@/lib/JsonLd";
 import { Header } from "@/components/Header";
 
@@ -11,20 +10,49 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "HackToast | Modern Web Design & Development",
-  description: "Custom web design, development and digital solutions that drive growth for your business.",
+  description:
+    "Custom web design, development and digital solutions that drive growth for your business.",
   keywords: "web design, web development, UI/UX, digital solutions, HackToast",
+  icons: {
+    icon: [
+      {
+        url: "/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+    ],
+    shortcut: "/favicon-32x32.png",
+    apple: [
+      {
+        url: "/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+    ],
+  },
   openGraph: {
     title: "HackToast | Modern Web Design & Development",
-    description: "Custom web design, development and digital solutions that drive growth for your business.",
+    description:
+      "Custom web design, development and digital solutions that drive growth for your business.",
     url: "https://hacktoast.com",
     siteName: "HackToast",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/logo.png",
+        width: 800,
+        height: 600,
+        alt: "HackToast Logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "HackToast | Modern Web Design & Development",
-    description: "Custom web design, development and digital solutions that drive growth for your business.",
+    description:
+      "Custom web design, development and digital solutions that drive growth for your business.",
+    images: ["/logo.png"],
   },
   robots: {
     index: true,
@@ -49,12 +77,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} bg-black text-white overflow-x-hidden`}>
+      <body
+        className={`${inter.className} bg-black text-white overflow-x-hidden`}
+      >
         <JsonLd />
         <Navbar />
         <Header />
         {children}
-        <Toaster 
+        <Toaster
           position="top-right"
           toastOptions={{
             style: {

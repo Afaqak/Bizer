@@ -1,31 +1,36 @@
-'use client'
-import React, { useState } from 'react';
-import { motion, useScroll, useMotionValueEvent, useTransform } from 'framer-motion';
+"use client";
+import React, { useState } from "react";
+import {
+  motion,
+  useScroll,
+  useMotionValueEvent,
+  useTransform,
+} from "framer-motion";
 import { Button } from "./Button";
-import { Menu, X } from 'lucide-react';
+import { Menu, X } from "lucide-react";
 
 // Add JSON-LD schema for navigation
 const navigationSchema = {
   "@context": "https://schema.org",
   "@type": "SiteNavigationElement",
-  "name": "Main Navigation",
-  "hasPart": [
+  name: "Main Navigation",
+  hasPart: [
     {
       "@type": "WebPage",
-      "name": "Projects",
-      "url": "https://hacktoast.com/#projects"
+      name: "Projects",
+      url: "https://hacktoast.com/#projects",
     },
     {
       "@type": "WebPage",
-      "name": "Services",
-      "url": "https://hacktoast.com/#services"
+      name: "Services",
+      url: "https://hacktoast.com/#services",
     },
     {
       "@type": "WebPage",
-      "name": "Contact",
-      "url": "https://hacktoast.com/#contact"
-    }
-  ]
+      name: "Contact",
+      url: "https://hacktoast.com/#contact",
+    },
+  ],
 };
 
 export const Navbar = () => {
@@ -43,7 +48,7 @@ export const Navbar = () => {
   const glowOpacity = useTransform(scrollY, [0, 100], [0.6, 0.8]);
   // For adjusting top position when in centered mode
   const topPosition = useTransform(scrollY, [0, 100], ["0px", "16px"]);
-  
+
   // Track scroll position for changing style
   useMotionValueEvent(scrollY, "change", (latest) => {
     // Only apply scrolled styles after 50px
@@ -56,15 +61,15 @@ export const Navbar = () => {
 
   const handleScroll = (sectionId: string) => {
     // Special case for contact section
-    if (sectionId === '#contact') {
-      const contactSection = document.querySelector('.contact-section');
+    if (sectionId === "#contact") {
+      const contactSection = document.querySelector(".contact-section");
       if (contactSection) {
         contactSection.scrollIntoView({ behavior: "smooth" });
         setIsMobileMenuOpen(false);
         return;
       }
     }
-    
+
     // Default behavior for other sections
     const section = document.querySelector(sectionId);
     if (section) {
@@ -74,16 +79,16 @@ export const Navbar = () => {
   };
 
   const navMenuItems = [
-    { label: 'Projects', id: '#projects' },
-    { label: 'Services', id: '#services' },
-    { label: 'Process', id: '#process' },
+    { label: "Projects", id: "#projects" },
+    { label: "Services", id: "#services" },
+    { label: "Process", id: "#process" },
   ];
 
   return (
     <motion.header
       role="banner"
       style={{
-        top: scrolled ? topPosition : 0
+        top: scrolled ? topPosition : 0,
       }}
       className="fixed left-0 right-0 w-full overflow-hidden z-50 flex justify-center items-center pointer-events-none"
     >
@@ -92,55 +97,70 @@ export const Navbar = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(navigationSchema) }}
       />
 
-      <motion.nav 
-        style={{ 
-          width, 
+      <motion.nav
+        style={{
+          width,
           height,
           borderRadius,
-          scale
+          scale,
         }}
         className={`relative flex justify-between items-center px-4 md:px-8 text-white pointer-events-auto mx-auto
-          ${scrolled 
-            ? 'bg-black/90 backdrop-blur-md shadow-[0_0_15px_rgba(74,250,74,0.15)] border border-[#4AFA4A]/20' 
-            : 'bg-gradient-to-r from-black via-black to-black'}`}
+          ${
+            scrolled
+              ? "bg-black/90 backdrop-blur-md shadow-[0_0_15px_rgba(74,250,74,0.15)] border border-[#4AFA4A]/20"
+              : "bg-gradient-to-r from-black via-black to-black"
+          }`}
         aria-label="Main navigation"
       >
         {/* Glow/Shine effect */}
-        <motion.div 
+        <motion.div
           className="absolute inset-0 pointer-events-none overflow-hidden"
-          style={{ 
+          style={{
             borderRadius,
-            opacity: glowOpacity
+            opacity: glowOpacity,
           }}
         >
-          <motion.div 
+          <motion.div
             className="absolute h-[200%] w-[50px] top-0 -left-[100px] bg-gradient-to-r from-transparent via-[#4AFA4A]/10 to-transparent transform -rotate-45"
-            animate={{ 
+            animate={{
               left: ["0%", "150%"],
-              transition: { 
-                duration: 2, 
-                repeat: Infinity, 
+              transition: {
+                duration: 2,
+                repeat: Infinity,
                 repeatType: "loop",
                 ease: "linear",
-                repeatDelay: 3
-              } 
+                repeatDelay: 3,
+              },
             }}
           />
         </motion.div>
 
         {/* Logo */}
-        <motion.a 
-          href="/" 
-          className="font-bold text-2xl md:text-4xl tracking-wide transition-all relative z-10"
-          style={{ fontSize: useTransform(scrollY, [0, 100], ['2rem', '1.75rem']) }}
+        <motion.a
+          href="/"
+          className="font-bold text-2xl md:text-4xl tracking-wide transition-all relative z-10 flex items-center"
+          style={{
+            fontSize: useTransform(scrollY, [0, 100], ["2rem", "1.75rem"]),
+          }}
           aria-label="HackToast - Home"
         >
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#4AFA4A] to-[#2ED82E]">Hack</span>
+          <motion.img
+            src="/logo.png"
+            alt="HackToast Logo"
+            className="mr-2 w-10 h-10"
+            width={100}
+            height={100}
+            animate={{ height: scrolled ? "35px" : "40px" }}
+            transition={{ duration: 0.3 }}
+          />
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#4AFA4A] to-[#2ED82E]">
+            Hack
+          </span>
           <span className="text-white">Toast</span>
         </motion.a>
-       
+
         {/* Desktop Navigation */}
-        <ul 
+        <ul
           className="hidden md:flex gap-6 text-lg items-center relative z-10"
           role="menubar"
           aria-label="Desktop navigation"
@@ -166,7 +186,7 @@ export const Navbar = () => {
             </motion.li>
           ))}
         </ul>
-       
+
         {/* Desktop Contact Button */}
         <motion.div
           whileHover={{ scale: 1.05 }}
@@ -205,7 +225,7 @@ export const Navbar = () => {
           aria-label="Mobile navigation menu"
         >
           <nav>
-            <ul 
+            <ul
               className="flex flex-col gap-6 text-xl"
               role="menu"
               aria-label="Mobile navigation"
@@ -230,7 +250,7 @@ export const Navbar = () => {
                   </a>
                 </motion.li>
               ))}
-              <motion.li 
+              <motion.li
                 role="none"
                 whileHover={{ x: 10 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -239,7 +259,7 @@ export const Navbar = () => {
                   href="#contact"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleScroll('#contact');
+                    handleScroll("#contact");
                   }}
                   className="cursor-pointer hover:text-[#4AFA4A] transition-colors border-b pb-3 border-white/20 block"
                   role="menuitem"
