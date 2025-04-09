@@ -59,6 +59,14 @@ export default function ServicesSection() {
     ease: (t) => Math.min(1, t * 1.5) 
   });
 
+  const handleScrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const contactSection = document.querySelector('.contact-section');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const services = [
     {
       id: 1,
@@ -281,6 +289,7 @@ export default function ServicesSection() {
                     className="mt-4 px-6 py-2 bg-[#4AFA4A] text-black font-medium rounded-lg hover:bg-opacity-90 transition-colors"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    onClick={handleScrollToContact}
                   >
                     Learn More
                   </motion.a>
@@ -376,6 +385,7 @@ export default function ServicesSection() {
                     )}
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
+                    onClick={handleScrollToContact}
                   >
                     Get Started
                   </motion.a>

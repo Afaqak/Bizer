@@ -102,15 +102,15 @@ export default function ProjectsSection() {
           {projects.map((project, index) => (
             <motion.div 
               key={project.id}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ 
                 type: "spring", 
-                stiffness: 200, 
-                damping: 20, 
-                delay: index * 0.1 
+                stiffness: 300, 
+                damping: 25, 
+                delay: index * 0.05
               }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: "-20px" }}
               className="mb-16"
             >
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6 max-w-6xl mx-auto">
@@ -206,7 +206,6 @@ export default function ProjectsSection() {
                         {project.title}
                       </h4>
                       
-                  
                       <div className="flex gap-2 flex-wrap mb-4">
                         {project.tags.map((tag) => (
                           <span key={tag} className="text-xs px-2 py-1 bg-zinc-800 rounded-full text-gray-300">
