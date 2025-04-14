@@ -5,6 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { Toaster } from "sonner";
 import JsonLd from "@/lib/JsonLd";
 import { Header } from "@/components/Header";
+import PageLoader from "@/components/PageLoader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -81,6 +82,7 @@ export default function RootLayout({
         className={`${inter.className} bg-black text-white overflow-x-hidden`}
       >
         <JsonLd />
+        <PageLoader />
         <Navbar />
         <Header />
         {children}

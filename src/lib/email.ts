@@ -16,23 +16,24 @@ async function sendMail(
     throw new Error("EmailJS configuration is incomplete.");
   }
 
+  console.log({
+    firstName,
+    lastName,
+    email,
+    message,
+    publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+    serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+    templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+  });
+
   try {
     await emailjs.send(
       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
       process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
       {
-        text: `Dear ${firstName || ""} ${lastName || ""},
-
-Thank you for reaching out to us. We have successfully received your form submission with the following details:
-
-- Name: ${firstName || ""} ${lastName || ""}
-- Email: ${email}
-- Message: ${message || ""}
-
-We will review your request and get back to you as soon as possible.
-
-Best regards,  
-Hacktoast Team`,
+        name: `${firstName || ""} ${lastName || ""}`,
+        email: email,
+        message: message || "",
         to_email: email,
       },
       process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
@@ -43,12 +44,9 @@ Hacktoast Team`,
       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
       process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
       {
-        text: `You have received a form submission:
-
-- Name: ${firstName || ""} ${lastName || ""}
-- Email: ${email}
-- Message: ${message || ""}
-`,
+        name: `${firstName || ""} ${lastName || ""}`,
+        email: email,
+        message: message || "",
         to_email: process.env.NEXT_PUBLIC_CONTACT_FORM_SUBMISSION_MAIL,
       },
       process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
