@@ -4,7 +4,6 @@ import { Inter } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import { Toaster } from "sonner";
 import JsonLd from "@/lib/JsonLd";
-import { Header } from "@/components/Header";
 import PageLoader from "@/components/PageLoader";
 
 const inter = Inter({ subsets: ["latin"] });
