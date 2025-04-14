@@ -2,6 +2,7 @@
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { GetInTouch } from "@/components/GetInTouch";
+import { Header } from "@/components/Header";
 import Process from "@/components/Process";
 import ProjectsSection from "@/components/ProjectsSection";
 import ServicesSection from "@/components/Services";
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <main className="w-full flex flex-col">
       <div className="flex-1">
+        <Header />
         <InfiniteSlider />
         <Process />
         <ServicesSection />

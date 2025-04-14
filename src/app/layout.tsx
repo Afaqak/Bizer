@@ -77,14 +77,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth view-transition">
       <body
         className={`${inter.className} bg-black text-white overflow-x-hidden`}
       >
         <JsonLd />
         <PageLoader />
         <Navbar />
-        <Header />
         {children}
         <Toaster
           position="top-right"

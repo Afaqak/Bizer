@@ -5,6 +5,9 @@ import { useRef } from "react";
 import { projects } from "@/lib/data";
 import Image from "next/image";
 import TextScramble from "./TextScramble";
+import Link from "next/link";
+import { Button } from "./Button";
+import { useRouter } from "next/navigation";
 
 // Add JSON-LD schema for projects section
 const projectsSchema = {
@@ -31,6 +34,20 @@ const projectsSchema = {
 
 export default function ProjectsSection() {
   const { scrollYProgress } = useScroll();
+  const router = useRouter();
+
+  // For view transitions
+  const handleNavigateToProjects = () => {
+    // Use View Transitions API if supported
+    if (typeof document !== "undefined" && "startViewTransition" in document) {
+      //@ts-ignore - TypeScript doesn't know about this API yet
+      document.startViewTransition(() => {
+        router.push("/projects");
+      });
+    } else {
+      router.push("/projects");
+    }
+  };
 
   // Project types for infinite slider
   const projectTypes = [
@@ -41,6 +58,37 @@ export default function ProjectsSection() {
     "• Dashboards",
     "• Online Stores",
   ];
+
+  // Featured projects we want to display
+  const featuredProjectIds = ["9", "1", "5", "8", "14"]; // neurotablet, sipath, youmedico, isg, hellscription
+  const featuredProjects = projects.filter((project) =>
+    featuredProjectIds.includes(project.id)
+  );
+
+  // Update project URLs
+  const updatedProjects = featuredProjects.map((project) => {
+    let updatedProject = { ...project };
+
+    if (project.id === "9") {
+      // Neurotablet
+      updatedProject.liveUrl = "https://app.findneurotablet.com";
+    } else if (project.id === "1") {
+      // Sipath
+      updatedProject.liveUrl = "https://sipath.com";
+    } else if (project.id === "5") {
+      // YouMedico
+      updatedProject.title = "YouMedico";
+      updatedProject.liveUrl = "https://app.youmedico.se";
+    } else if (project.id === "8") {
+      // ISG
+      updatedProject.liveUrl = "https://transcom.com/awards/isg-recognition/";
+    } else if (project.id === "14") {
+      // Hellscription
+      updatedProject.liveUrl = "https://hellscription-3sx8.vercel.app/";
+    }
+
+    return updatedProject;
+  });
 
   return (
     <section
@@ -99,7 +147,7 @@ export default function ProjectsSection() {
 
         {/* Simple and reliable project display */}
         <div className="space-y-16 mt-12">
-          {projects.map((project, index) => (
+          {updatedProjects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
@@ -112,6 +160,7 @@ export default function ProjectsSection() {
               }}
               viewport={{ once: true, margin: "-20px" }}
               className="mb-12"
+              style={{ viewTransitionName: `project-section-${project.id}` }}
             >
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6 max-w-6xl mx-auto">
                 <div className="md:col-span-6 xl:col-span-7 mb-8 md:mb-0">
@@ -119,6 +168,9 @@ export default function ProjectsSection() {
                     className="relative aspect-[16/10] overflow-hidden bg-[#00B8FF] rounded-lg"
                     whileHover={{ scale: 1.03 }}
                     transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                    style={{
+                      viewTransitionName: `project-image-${project.id}`,
+                    }}
                   >
                     <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-between z-10">
                       <div className="flex justify-between items-start">
@@ -152,11 +204,21 @@ export default function ProjectsSection() {
                       transition={{ duration: 0.3 }}
                     />
 
-                    <img
+                    <Image
                       src={project.image}
                       alt={project.title}
-                      className="absolute inset-0 w-full h-full object-cover"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      priority={index < 2}
+                      className="object-cover object-center w-full h-full"
                     />
+
+                    {/* Show "Coming Soon" badge for Hellscription */}
+                    {project.id === "14" && (
+                      <div className="absolute top-4 right-4 bg-[#4AFA4A] text-black font-bold px-3 py-1 rounded-full z-10 shadow-lg">
+                        Coming Soon
+                      </div>
+                    )}
                   </motion.div>
                 </div>
 
@@ -169,6 +231,7 @@ export default function ProjectsSection() {
                         "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
                     }}
                     transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    style={{ viewTransitionName: `project-info-${project.id}` }}
                   >
                     {/* Shiny effect overlay */}
                     <div className="absolute -inset-[1px] bg-gradient-to-r from-transparent via-[rgba(74,250,74,0.2)] to-transparent opacity-0 group-hover:opacity-100 z-0 overflow-hidden rounded-lg">
@@ -207,16 +270,16 @@ export default function ProjectsSection() {
                         {project.description}
                       </p>
 
-                      {/* <div className="flex flex-wrap gap-4">
+                      <div className="flex flex-wrap gap-4">
                         {project.liveUrl && (
-                          <motion.div 
+                          <motion.div
                             className="relative overflow-hidden h-10 rounded-lg w-fit"
                             whileHover="hover"
                             initial="initial"
                           >
-                            <motion.a 
-                              href={project.liveUrl} 
-                              target="_blank" 
+                            <motion.a
+                              href={project.liveUrl}
+                              target="_blank"
                               rel="noopener noreferrer"
                               className="px-4 flex items-center justify-center h-full bg-[#4AFA4A] text-black font-medium rounded-lg"
                               variants={{
@@ -227,7 +290,7 @@ export default function ProjectsSection() {
                               <motion.span
                                 variants={{
                                   initial: { y: 0 },
-                                  hover: { y: -30 }
+                                  hover: { y: -30 },
                                 }}
                                 transition={{ duration: 0.2 }}
                                 className="block"
@@ -237,7 +300,7 @@ export default function ProjectsSection() {
                               <motion.span
                                 variants={{
                                   initial: { y: 60, opacity: 0 },
-                                  hover: { y: 0, opacity: 1 }
+                                  hover: { y: 0, opacity: 1 },
                                 }}
                                 transition={{ duration: 0.2 }}
                                 className="absolute"
@@ -247,16 +310,7 @@ export default function ProjectsSection() {
                             </motion.a>
                           </motion.div>
                         )}
-                        <motion.a 
-                          href="#" 
-                          className="px-4 py-2 border border-white/20 rounded-lg hover:border-[#4AFA4A] hover:text-[#4AFA4A] transition-colors"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                        >
-                          More Details
-                        </motion.a>
-                      </div> */}
+                      </div>
                     </div>
                   </motion.div>
                 </div>
@@ -264,6 +318,19 @@ export default function ProjectsSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* View All Projects Button */}
+        <motion.div
+          className="mt-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          viewport={{ once: true }}
+        >
+          <Button onClick={handleNavigateToProjects} className="mx-auto px-8">
+            View All Projects
+          </Button>
+        </motion.div>
       </div>
     </section>
   );

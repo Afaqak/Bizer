@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function PageLoader() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const [currentLangIndex, setCurrentLangIndex] = useState(0);
 
   // Array of greetings in different languages
@@ -25,23 +26,54 @@ export default function PageLoader() {
   ];
 
   useEffect(() => {
-    // Language rotation effect - faster speed (600ms)
-    const langInterval = setInterval(() => {
-      setCurrentLangIndex((prevIndex) =>
-        prevIndex === greetings.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 150);
-
-    // Hide loader after content is presumably loaded
-    const timeout = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-
-    return () => {
-      clearInterval(langInterval);
-      clearTimeout(timeout);
-    };
+    setIsMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
+    try {
+      const hasVisited = localStorage.getItem("hasVisitedSite");
+      if (!hasVisited) {
+        setLoading(true);
+      }
+    } catch (e) {
+      console.error("Failed to check localStorage:", e);
+    }
+  }, [isMounted]);
+
+  // Third effect: Handle the animation and language rotation
+  useEffect(() => {
+    if (!loading || !isMounted) return;
+
+    try {
+      // Language rotation effect - faster speed
+      const langInterval = setInterval(() => {
+        setCurrentLangIndex((prevIndex) =>
+          prevIndex === greetings.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 150);
+
+      // Hide loader after content is presumably loaded and THEN set localStorage
+      const timeout = setTimeout(() => {
+        setLoading(false);
+        // Set the flag in localStorage AFTER animation completes
+        localStorage.setItem("hasVisitedSite", "true");
+      }, 3000);
+
+      return () => {
+        clearInterval(langInterval);
+        clearTimeout(timeout);
+      };
+    } catch (error) {
+      // In case of errors, hide the loader
+      console.error("Loader error:", error);
+      setLoading(false);
+    }
+  }, [loading, isMounted, greetings.length]);
+
+  // Only render the loader client-side to avoid hydration errors
+  if (!isMounted) return null;
 
   return (
     <AnimatePresence>
@@ -57,9 +89,8 @@ export default function PageLoader() {
           <div className="flex flex-col items-center">
             <motion.div
               key={currentLangIndex}
-              //   initial={{ opacity: 0 }}
-              //   animate={{ opacity: 1, y: 0, scale: 1 }}
-              //   exit={{ opacity: 0 }}
+              initial={{ opacity: 1 }}
+              animate={{ opacity: 1 }}
               transition={{
                 type: "spring",
                 stiffness: 300,
@@ -73,9 +104,8 @@ export default function PageLoader() {
 
             <motion.div
               key={`lang-${currentLangIndex}`}
-              //   initial={{ opacity: 0, scale: 0.8 }}
-              //   animate={{ opacity: 1, scale: 1 }}
-              //   exit={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 1 }}
+              animate={{ opacity: 1 }}
               transition={{
                 type: "spring",
                 stiffness: 300,
