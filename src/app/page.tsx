@@ -15,13 +15,13 @@ export default function Home() {
         <InfiniteSlider />
         <Process />
         <ServicesSection />
-        <ProjectsSection/>
+        <ProjectsSection />
         {/* <InfiniteSlider rotate={0}/> */}
         {/* <SocialLinks/> */}
-        <GetInTouch/>
-        <Contact/>
+        <GetInTouch />
+        <Contact />
       </div>
-      <Footer/>
+      <Footer />
     </main>
   );
 }

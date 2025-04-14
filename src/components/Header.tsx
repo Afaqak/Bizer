@@ -9,16 +9,17 @@ import { motion } from "framer-motion";
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "HackToast",
-  "description": "We Design Websites That Captivate, Convert, and Elevate Your Brand. Modern tech solutions for forward-thinking businesses.",
-  "slogan": "We Design Websites That Captivate, Convert, and Elevate Your Brand",
-  "url": "https://hacktoast.com",
-  "knowsAbout": [
+  name: "HackToast",
+  description:
+    "We Design Websites That Captivate, Convert, and Elevate Your Brand. Modern tech solutions for forward-thinking businesses.",
+  slogan: "We Design Websites That Captivate, Convert, and Elevate Your Brand",
+  url: "https://hacktoast.com",
+  knowsAbout: [
     "Web Design",
     "UI/UX Design",
     "Landing Page Design",
-    "E-commerce Development"
-  ]
+    "E-commerce Development",
+  ],
 };
 
 export const Header = () => {
@@ -59,7 +60,7 @@ export const Header = () => {
   };
 
   return (
-    <section 
+    <section
       className="bg-black flex px-4 items-center mt-6 flex-col gap-16 justify-center w-full h-screen xl:h-[calc(100vh-20px)]"
       aria-label="Hero Section"
     >
@@ -83,25 +84,24 @@ export const Header = () => {
           <Star className="fill-[#4AFA4A] stroke-[#4AFA4A] size-8 sm:size-12" />
         </motion.div>
 
-        <motion.h1 
-          variants={itemVariants} 
-          className="text-center"
-        >
-          We Design <span className="text-[#4AFA4A]">Websites</span> That Captivate
+        <motion.h1 variants={itemVariants} className="text-center">
+          We Design <span className="text-[#4AFA4A]">Websites</span> That
+          Captivate
         </motion.h1>
-        
-        <motion.p 
-          variants={itemVariants} 
-          className="text-center"
-        >
-          Convert, and <span className="text-[#4AFA4A]">Elevate Your Brand</span>
+
+        <motion.p variants={itemVariants} className="text-center">
+          Convert, and{" "}
+          <span className="text-[#4AFA4A]">Elevate Your Brand</span>
         </motion.p>
-        
-        <motion.p 
-          variants={itemVariants} 
+
+        <motion.p
+          variants={itemVariants}
           className="text-center text-gray-300 text-3xl xl:text-4xl"
         >
-          Modern solutions for <span className="text-white font-extrabold">forward-thinking businesses</span>
+          Modern solutions for{" "}
+          <span className="text-white font-extrabold">
+            forward-thinking businesses
+          </span>
         </motion.p>
 
         <motion.div
@@ -121,7 +121,10 @@ export const Header = () => {
       >
         With years of experience, we specialize in crafting
         <motion.span
-          className={cn("text-2xl ml-2 font-bold text-[#4AFA4A]", bangers.className)}
+          className={cn(
+            "text-2xl ml-2 font-bold text-[#4AFA4A]",
+            bangers.className
+          )}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
