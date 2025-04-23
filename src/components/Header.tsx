@@ -86,7 +86,7 @@ export const Header = () => {
 
         <motion.h1 variants={itemVariants} className="text-center">
           We Design <span className="text-[#4AFA4A]">Websites</span> That
-          Captivate
+          Captivate,
         </motion.h1>
 
         <motion.p variants={itemVariants} className="text-center">

@@ -324,7 +324,7 @@ export default function Contact() {
                     </p>
                     <div className="flex space-x-4">
                       <a
-                        href="https://www.linkedin.com/in/hack-toast-440b98343/"
+                        href="https://www.linkedin.com/company/hacktoast"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-[#4AFA4A]/20 transition-colors"
