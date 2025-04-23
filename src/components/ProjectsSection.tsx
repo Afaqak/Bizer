@@ -1,11 +1,9 @@
 "use client";
 
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { useRef } from "react";
 import { projects } from "@/lib/data";
 import Image from "next/image";
 import TextScramble from "./TextScramble";
-import Link from "next/link";
 import { Button } from "./Button";
 import { useRouter } from "next/navigation";
 
@@ -209,7 +207,7 @@ export default function ProjectsSection() {
                       alt={project.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      priority={index < 2}
+                      priority={true}
                       className="object-cover object-center w-full h-full"
                     />
 

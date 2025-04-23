@@ -95,7 +95,6 @@
   color: lime;
 } */
 
-
 .embla {
   position: relative;
   overflow: hidden;
@@ -117,4 +116,55 @@
   flex: 0 0 auto;
   width: auto; /* Adjust based on your design */
   min-width: 100px; /* Example minimum width */
+}
+
+/* Performance optimizations */
+
+/* Enable GPU acceleration for animations */
+.animate-gpu {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimize for reduced motion when needed */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Dynamically reduce animations when many are running */
+.reduce-animations * {
+  transition-duration: 0.1ms !important;
+  animation-duration: 0.1ms !important;
+}
+
+/* Optimize text rendering */
+body {
+  text-rendering: optimizeSpeed;
+}
+
+/* Better content-visibility for off-screen sections */
+section:not(:first-child) {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 1000px;
+}
+
+/* Layer compositor hints */
+.layer {
+  transform: translateZ(0);
+}
+
+/* Prevent layout shifts during image loading */
+img {
+  aspect-ratio: attr(width) / attr(height);
+}
+
+/* Optimize font display for better LCP scores */
+@font-face {
+  font-display: swap;
 }
