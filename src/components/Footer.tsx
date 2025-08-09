@@ -31,8 +31,8 @@ const footerSchema = {
   ],
   contactPoint: {
     "@type": "ContactPoint",
-    email: "frivxd10@gmail.com",
-    telephone: "+923305823280",
+    email: "hacktoastofficial@gmail.com",
+    telephone: "03305823280",
     contactType: "customer service",
   },
 };
@@ -128,28 +128,28 @@ export const Footer = () => {
           <address className="space-y-2 not-italic">
             <p>
               <a
-                href="mailto:frivxd10@gmail.com"
+                href="mailto:hacktoastofficial@gmail.com"
                 className="text-[#4AFA4A] hover:underline"
                 aria-label="Email us"
               >
-                frivxd10@gmail.com
+                hacktoastofficial@gmail.com
               </a>
             </p>
             <p className="mt-2 flex flex-col gap-2">
               <a
-                href="tel:+923305823280"
+                href="tel:03305823280"
                 className="text-gray-400 hover:text-[#4AFA4A]"
                 aria-label="Call us"
               >
-                +92 330 582 3280
+                03305823280
               </a>
 
               <a
-                href="tel:+94762028447"
+                href="tel:03355077055"
                 className="text-gray-400 hover:text-[#4AFA4A]"
                 aria-label="Call us"
               >
-                +94 76 202 8447
+                0335 5077055
               </a>
             </p>
           </address>

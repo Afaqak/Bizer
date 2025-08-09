@@ -104,40 +104,45 @@ export default function ServicesSection() {
   const packages = [
     {
       id: 1,
-      name: "Basic",
-      price: "$100",
-      description: "Static site with contact form",
+      name: "Starter",
+      price: "$2,500+",
+      description: "Ideal for startups & small businesses",
       features: [
-        "Static website",
-        "Contact form",
-        "Responsive design",
-        "Less than 7 pages",
+        "Up to 10 custom-designed pages",
+        "Fully responsive (mobile, tablet, desktop)",
+        "Contact form with spam protection",
+        "SEO optimization",
+        "Hosting setup & basic training",
       ],
       popular: false,
     },
     {
       id: 2,
-      name: "Basic Managed",
-      price: "$150",
-      description: "Dynamic content with a simple admin panel",
+      name: "Professional",
+      price: "$5,000 – $12,000",
+      description: "Ideal for growing companies & SMEs",
       features: [
-        "Everything in Basic",
-        "Less than 10 pages",
-        "Simple admin panel for dynamic content updates",
+        "Everything in Starter",
+        "Dynamic content with custom admin panel (CMS)",
+        "API integrations (payments, booking, CRM)",
+        "Advanced animations & UI polish",
+        "1 month priority support",
       ],
       popular: true,
     },
     {
       id: 3,
-      name: "Advanced",
-      price: "$150+",
-      description: "Custom features depending on your specific needs",
+      name: "Enterprise",
+      price: "$15,000 – $25,000+",
+      description: "Ideal for corporations & large-scale projects",
       features: [
-        "Everything in Basic Managed",
-        "Custom features",
-        "Advanced statistics/analytics",
-        "Custom integrations",
-        "Any amount of pages",
+        "Everything in Professional",
+        "Fully custom web app / SaaS platform",
+        "Advanced analytics & reporting",
+        "Multi-language support",
+        "Custom API development",
+        "Security hardening & compliance setup",
+        "3–6 months post-launch support",
       ],
       popular: false,
     },
@@ -202,8 +207,9 @@ export default function ServicesSection() {
               }}
             >
               {[...serviceTypes, ...serviceTypes].map((type, i) => (
+                
                 <span key={i} className="text-sm mr-6 md:mr-8 text-gray-400">
-                  {type}
+                  <TextScramble text={type} />
                 </span>
               ))}
             </motion.div>
@@ -238,7 +244,7 @@ export default function ServicesSection() {
                     {service.title}
                   </h3>
                   <p className="text-gray-400 text-sm max-w-2xl">
-                    {service.description}
+                    <TextScramble text={service.description} />
                   </p>
                 </div>
               </div>
@@ -291,7 +297,7 @@ export default function ServicesSection() {
                   )}
 
                   <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
-                  <div className="text-3xl font-bold mb-2">{pkg.price}</div>
+                  <div className="text-xl font-bold mb-2 whitespace-nowrap">{pkg.price}</div>
                   <p className="text-gray-400 text-sm mb-8">
                     {pkg.description}
                   </p>

@@ -47,7 +47,9 @@ async function sendMail(
         name: `${firstName || ""} ${lastName || ""}`,
         email: email,
         message: message || "",
-        to_email: process.env.NEXT_PUBLIC_CONTACT_FORM_SUBMISSION_MAIL,
+        to_email:
+          process.env.NEXT_PUBLIC_CONTACT_FORM_SUBMISSION_MAIL ||
+          "hacktoastofficial@gmail.com",
       },
       process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
     );

@@ -75,8 +75,8 @@ export default function Contact() {
               "Get in touch with us for your web design and development needs",
             contactPoint: {
               "@type": "ContactPoint",
-              email: "frivxd10@gmail.com",
-              telephone: ["+923305823280", "+94762028447"],
+               email: "hacktoastofficial@gmail.com",
+               telephone: ["03305823280", "03355077055"],
               contactType: "customer service",
               areaServed: "Worldwide",
             },
@@ -273,10 +273,10 @@ export default function Contact() {
                         <TextScramble text="Email" className="text-sm" />
                       </p>
                       <a
-                        href="mailto:frivxd10@gmail.com"
+                        href="mailto:hacktoastofficial@gmail.com"
                         className="text-white hover:text-[#4AFA4A] transition-colors text-sm"
                       >
-                        frivxd10@gmail.com
+                        hacktoastofficial@gmail.com
                       </a>
                     </div>
                   </div>
@@ -304,16 +304,16 @@ export default function Contact() {
                         <TextScramble text="Phone" className="text-sm" />
                       </p>
                       <a
-                        href="tel:+923305823280"
+                        href="tel:03305823280"
                         className="text-white hover:text-[#4AFA4A] transition-colors text-sm block"
                       >
-                        +92 330 582 3280
+                        03305823280
                       </a>
                       <a
-                        href="tel:+94762028447"
+                        href="tel:03355077055"
                         className="text-white hover:text-[#4AFA4A] transition-colors text-sm block mt-1"
                       >
-                        +94 76 202 8447
+                        0335 5077055
                       </a>
                     </div>
                   </div>
